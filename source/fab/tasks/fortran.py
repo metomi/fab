@@ -455,10 +455,10 @@ class FortranAnalyser(Task):
                     = self._cbind_pattern.match(line)
                 if cbind_match:
                     cbind_name = cbind_match.group(2)
+                    # The name keyword on the bind statement is optional.
+                    # If it doesn't exist, the procedure name is used
                     if cbind_name is None:
-                        cbind_message \
-                            = '"bind(c)" statement has no name'
-                        raise TaskException(cbind_message)
+                        cbind_name = proc_name
                     cbind_name = cbind_name.lower().strip("'\"")
                     logger.debug('Bound to C symbol "%s"', cbind_name)
                     # A bind within an interface block means this is
@@ -478,6 +478,26 @@ class FortranAnalyser(Task):
                         symbol_id = CSymbolID(cbind_name, reader.filename)
                         cstate.add_c_symbol(symbol_id)
                 continue
+
+            cbind_match = self._cbind_pattern.match(line)
+            if cbind_match:
+                # This should be a line binding from C to a variable definition
+                # (procedure binds are dealt with above)
+                cbind_name = cbind_match.group(2)
+                # The name keyword on the bind statement is optional.
+                # If it doesn't exist, the Fortran variable name is used
+                if cbind_name is None:
+                    var_search = re.search(r'.*::\s*(\w+)', line)
+                    if var_search:
+                        cbind_name = var_search.group(1)
+                    else:
+                        cbind_message \
+                            = 'failed to find variable name ' \
+                              'on C bound variable'
+                        raise TaskException(cbind_message)
+                # Add to the C database
+                symbol_id = CSymbolID(cbind_name, reader.filename)
+                cstate.add_c_symbol(symbol_id)
 
             iface_match: Optional[Match] = self._interface_pattern.match(line)
             if iface_match:
