@@ -477,6 +477,7 @@ class FortranAnalyser(Task):
                         # Add to the C database
                         symbol_id = CSymbolID(cbind_name, reader.filename)
                         cstate.add_c_symbol(symbol_id)
+                        new_artifact.add_definition(cbind_name)
                 continue
 
             cbind_match = self._cbind_pattern.match(line)
@@ -498,6 +499,7 @@ class FortranAnalyser(Task):
                 # Add to the C database
                 symbol_id = CSymbolID(cbind_name, reader.filename)
                 cstate.add_c_symbol(symbol_id)
+                new_artifact.add_definition(cbind_name)
 
             iface_match: Optional[Match] = self._interface_pattern.match(line)
             if iface_match:

@@ -181,8 +181,11 @@ class Engine(object):
                     new_artifacts.append(artifact)
 
         elif artifact.state is Compiled:
-            # Begin populating the list for linking
-            new_objects.append(artifact)
+            # Begin populating the list for linking; avoid adding the
+            # same artifact locations to the list multiple times (artifacts
+            # may appear twice in cases of Fortran-C Interoperability)
+            if artifact.location not in [obj.location for obj in objects]:
+                new_objects.append(artifact)
             # But do not return a new artifact - this object
             # is "done" as far as the processing is concerned
 
