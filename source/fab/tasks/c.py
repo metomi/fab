@@ -349,6 +349,7 @@ class CAnalyser(Task):
 
         # Now walk the actual nodes and find all relevant external symbols
         usr_includes = []
+        external_vars = []
         current_def = None
         for node in translation_unit.cursor.walk_preorder():
             if node.kind == clang.cindex.CursorKind.FUNCTION_DECL:
@@ -367,12 +368,31 @@ class CAnalyser(Task):
                             == "usr_include"):
                         usr_includes.append(node.spelling)
 
-            elif (node.kind == clang.cindex.CursorKind.CALL_EXPR):
+            elif node.kind == clang.cindex.CursorKind.CALL_EXPR:
                 # When encountering a function call we should be able to
                 # cross-reference it with a definition seen earlier; and
                 # if it came from a user supplied header then we will
                 # consider it a dependency within the project
                 if node.spelling in usr_includes and current_def is not None:
+                    # TODO: Assumption that the most recent exposed
+                    # definition encountered above is the one which
+                    # should lodge this dependency - is that true?
+                    state.add_c_dependency(current_def, node.spelling)
+                    new_artifact.add_dependency(node.spelling)
+
+            elif node.kind == clang.cindex.CursorKind.VAR_DECL:
+                # Variable definitions can be external too, lodge any
+                # encountered in user headers here
+                if ((not node.is_definition())
+                        and node.linkage == clang.cindex.LinkageKind.EXTERNAL):
+                    if (self._check_for_include(node.location.line)
+                            == "usr_include"):
+                        external_vars.append(node.spelling)
+
+            elif node.kind == clang.cindex.CursorKind.DECL_REF_EXPR:
+                # Find references to variables which came in externally (as
+                # captured by the list above)
+                if node.spelling in external_vars and current_def is not None:
                     # TODO: Assumption that the most recent exposed
                     # definition encountered above is the one which
                     # should lodge this dependency - is that true?
