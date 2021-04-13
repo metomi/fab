@@ -6,4 +6,5 @@
 int main()
 {
   f_inter();
+  return 0;
 }

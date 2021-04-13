@@ -1,0 +1,33 @@
+File View
+  File   : system-tests/CFortranInterop/c_lower.c
+    Hash : 2457312520
+  File   : system-tests/CFortranInterop/c_roundtrip.c
+    Hash : 3255455825
+  File   : system-tests/CFortranInterop/f_inters.F90
+    Hash : 1710816464
+  File   : system-tests/CFortranInterop/f_inters.h
+    Hash : 3170915542
+  File   : system-tests/CFortranInterop/f_var.F90
+    Hash : 1382116454
+  File   : system-tests/CFortranInterop/f_var.h
+    Hash : 58283018
+Fortran View
+  Program unit    : f_inters
+    Found in      : system-tests/CFortranInterop/working/f_inters.f90
+    Prerequisites : get_f_var_ptr
+  Program unit    : f_var
+    Found in      : system-tests/CFortranInterop/working/f_var.f90
+    Prerequisites : 
+C View
+  Symbol          : f_inter
+    Found in      : system-tests/CFortranInterop/working/f_inters.f90
+    Prerequisites : 
+  Symbol          : get_f_var_ptr
+    Found in      : system-tests/CFortranInterop/working/c_lower.c
+    Prerequisites : helloworld
+  Symbol          : helloworld
+    Found in      : system-tests/CFortranInterop/working/f_var.f90
+    Prerequisites : 
+  Symbol          : main
+    Found in      : system-tests/CFortranInterop/working/c_roundtrip.c
+    Prerequisites : f_inter
