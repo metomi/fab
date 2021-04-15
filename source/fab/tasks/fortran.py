@@ -485,6 +485,7 @@ class FortranAnalyser(Task):
                 # This should be a line binding from C to a variable definition
                 # (procedure binds are dealt with above)
                 cbind_name = cbind_match.group(2)
+
                 # The name keyword on the bind statement is optional.
                 # If it doesn't exist, the Fortran variable name is used
                 if cbind_name is None:
@@ -496,6 +497,10 @@ class FortranAnalyser(Task):
                             = 'failed to find variable name ' \
                               'on C bound variable'
                         raise TaskException(cbind_message)
+
+                cbind_name = cbind_name.lower().strip("'\"")
+                logger.debug('Found C bound variable called "%s"', cbind_name)
+
                 # Add to the C database
                 symbol_id = CSymbolID(cbind_name, reader.filename)
                 cstate.add_c_symbol(symbol_id)

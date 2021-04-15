@@ -21,6 +21,10 @@ from fab.tasks.fortran import \
     FortranUnitID, \
     FortranUnitUnresolvedID, \
     FortranWorkingState
+from fab.tasks.c import \
+    CInfo, \
+    CSymbolID, \
+    CWorkingState
 from fab.reader import TextReader
 from fab.artifact import \
     Artifact, \
@@ -337,28 +341,28 @@ class TestFortranAnalyser(object):
             dedent('''
                    program foo
                      use iso_fortran_env, only : output
-                     use, intrinsic :: ios_c_binding
+                     use, intrinsic :: iso_c_binding
                      use beef_mod
                      implicit none
                    end program foo
 
                    module bar
                      use iso_fortran_env, only : output
-                     use, intrinsic :: ios_c_binding
+                     use, intrinsic :: iso_c_binding
                      use cheese_mod, only : bits_n_bobs
                      implicit none
                    end module bar
 
                    function baz(first, second)
                      use iso_fortran_env, only : output
-                     use, intrinsic :: ios_c_binding
+                     use, intrinsic :: iso_c_binding
                      use teapot_mod
                      implicit none
                    end function baz
 
                    subroutine qux()
                      use iso_fortran_env, only : output
-                     use, intrinsic :: ios_c_binding
+                     use, intrinsic :: iso_c_binding
                      use wibble_mod
                      use wubble_mod, only: stuff_n_nonsense
                      implicit none
@@ -390,6 +394,72 @@ class TestFortranAnalyser(object):
         assert output_artifacts[0].depends_on == ['beef_mod', 'cheese_mod',
                                                   'teapot_mod', 'wibble_mod',
                                                   'wubble_mod']
+        assert output_artifacts[0].location == test_file
+        assert output_artifacts[0].filetype is FortranSource
+        assert output_artifacts[0].state is Analysed
+
+    def test_analyser_cbinding(self, caplog, tmp_path):
+        """
+        Tests that C bind procedures are correctly detected.
+        """
+        caplog.set_level(logging.DEBUG)
+
+        test_file: Path = tmp_path / 'test.f90'
+        test_file.write_text(
+            dedent('''
+                module foo
+
+                   integer, bind(c), target, save :: quuz
+                   real, bind(c, name="corge"), target, save :: varname
+
+                   function bar() bind(c, name="bar_c")
+                     implicit none
+                   end function bar
+
+                   subroutine baz(), bind(c)
+                     implicit none
+                   end subroutine baz
+
+                   interface
+                     function qux() bind(c, name="qux_c")
+                       implicit none
+                     end function qux
+
+                     subroutine quux() bind(c)
+                       implicit none
+                     end subroutine quux
+                   end interface
+                end module foo
+
+                   '''))
+
+        database: SqliteStateDatabase = SqliteStateDatabase(tmp_path)
+        test_unit = FortranAnalyser(tmp_path)
+        test_artifact = Artifact(test_file,
+                                 FortranSource,
+                                 Raw)
+        output_artifacts = test_unit.run([test_artifact])
+
+        # Confirm database is updated
+        # Fortran part
+        working_state = FortranWorkingState(database)
+        assert list(working_state) \
+            == [FortranInfo(FortranUnitID('foo', tmp_path/'test.f90'),
+                            ['quux', 'qux_c'])]
+
+        # C part
+        cworking_state = CWorkingState(database)
+        assert list(cworking_state) \
+            == [CInfo(CSymbolID('bar_c', tmp_path/'test.f90'), []),
+                CInfo(CSymbolID('baz', tmp_path/'test.f90'), []),
+                CInfo(CSymbolID('corge', tmp_path/'test.f90'), []),
+                CInfo(CSymbolID('quuz', tmp_path/'test.f90'), [])]
+
+        # Confirm returned Artifact is updated
+        assert len(output_artifacts) == 1
+        assert output_artifacts[0].defines \
+            == ['foo', 'quuz', 'corge', 'bar_c', 'baz']
+        assert output_artifacts[0].depends_on == ['qux_c', 'quux']
         assert output_artifacts[0].location == test_file
         assert output_artifacts[0].filetype is FortranSource
         assert output_artifacts[0].state is Analysed
