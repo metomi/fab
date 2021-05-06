@@ -270,15 +270,19 @@ class TestCAnalyser(object):
                   #pragma FAB UsrIncludeEnd
 
                   #pragma FAB UsrIncludeStart
-                  void bar();
+                  void bar(int);
                   #pragma FAB UsrIncludeEnd
 
                   #pragma FAB SysIncludeStart
                   void baz();
                   #pragma FAB SysIncludeEnd
 
+                  #pragma FAB UsrIncludeStart
+                  extern int *qux;
+                  #pragma FAB UsrIncludeEnd
+
                   void foo() {
-                      bar();
+                      bar(qux);
                       baz();
                   }
                    '''))
@@ -294,12 +298,12 @@ class TestCAnalyser(object):
         working_state = CWorkingState(database)
         assert list(working_state) \
             == [CInfo(CSymbolID('foo', test_file),
-                      ['bar'])]
+                      ['bar', 'qux'])]
 
         # Confirm returned Artifact is updated
         assert len(output_artifacts) == 1
         assert output_artifacts[0].defines == ['foo']
-        assert output_artifacts[0].depends_on == ['bar']
+        assert output_artifacts[0].depends_on == ['bar', 'qux']
         assert output_artifacts[0].location == test_file
         assert output_artifacts[0].filetype is CSource
         assert output_artifacts[0].state is Analysed
