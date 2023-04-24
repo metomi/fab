@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Using Fab at the Met Office &#8212; fab 1.1.dev0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction to Configuration" href="config_intro.html" />
+    <link rel="prev" title="Environment" href="environment.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#metoffice" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="index.html" title="fab 1.1.dev0 documentation"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">fab 1.1.dev0 documentation</span>
+          <span class="md-header-nav__topic"> Using Fab at the Met Office </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = ""versions.json"",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">fab 1.1.dev0 documentation</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="index.html" title="fab 1.1.dev0 documentation" class="md-nav__button md-logo">
+      
+        <img src="_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="index.html"
+       title="fab 1.1.dev0 documentation">fab 1.1.dev0 documentation</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Contents:</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="install.html" class="md-nav__link">Installing Fab</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="environment.html" class="md-nav__link">Environment</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> Using Fab at the Met Office </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">Using Fab at the Met Office</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#metoffice--page-root" class="md-nav__link">Using Fab at the Met Office</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#using-fab" class="md-nav__link">Using Fab</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#fortran-only" class="md-nav__link">Fortran Only</a>
+        </li>
+        <li class="md-nav__item"><a href="#fortran-and-c" class="md-nav__link">Fortran and C</a>
+        </li>
+        <li class="md-nav__item"><a href="#singularity-container" class="md-nav__link">Singularity Container</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#developing-fab" class="md-nav__link">Developing Fab</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#mixing-virtual-environment-and-environment-modules" class="md-nav__link">Mixing Virtual Environment and Environment Modules</a>
+        </li>
+        <li class="md-nav__item"><a href="#mixing-conda-and-environemnt-modules" class="md-nav__link">Mixing Conda and Environemnt Modules</a>
+        </li>
+        <li class="md-nav__item"><a href="#pycharm" class="md-nav__link">PyCharm</a>
+        </li>
+        <li class="md-nav__item"><a href="#rose" class="md-nav__link">Rose</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#developing-fab-at-the-met-office" class="md-nav__link">Developing Fab at the Met Office</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#acceptance-tests" class="md-nav__link">Acceptance tests</a>
+        </li>
+        <li class="md-nav__item"><a href="#build-singularity-image" class="md-nav__link">Build singularity image</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/metoffice.rst.txt">Show Source</a> </li>
+
+  </ul>
+</nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#developing-fab-at-the-met-office" class="md-nav__link">Developing Fab at the Met Office</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="config_intro.html" class="md-nav__link">Introduction to Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="writing_config.html" class="md-nav__link">How to Write a Build Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="advanced_config.html" class="md-nav__link">Advanced Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="features.html" class="md-nav__link">Features</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="apidoc/modules.html" class="md-nav__link">Api Reference</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="development.html" class="md-nav__link">Developer’s guide</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="glossary.html" class="md-nav__link">Glossary</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="genindex.html" class="md-nav__link">Index</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="py-modindex.html" class="md-nav__link">Python Module Index</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#metoffice--page-root" class="md-nav__link">Using Fab at the Met Office</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#using-fab" class="md-nav__link">Using Fab</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#fortran-only" class="md-nav__link">Fortran Only</a>
+        </li>
+        <li class="md-nav__item"><a href="#fortran-and-c" class="md-nav__link">Fortran and C</a>
+        </li>
+        <li class="md-nav__item"><a href="#singularity-container" class="md-nav__link">Singularity Container</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#developing-fab" class="md-nav__link">Developing Fab</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#mixing-virtual-environment-and-environment-modules" class="md-nav__link">Mixing Virtual Environment and Environment Modules</a>
+        </li>
+        <li class="md-nav__item"><a href="#mixing-conda-and-environemnt-modules" class="md-nav__link">Mixing Conda and Environemnt Modules</a>
+        </li>
+        <li class="md-nav__item"><a href="#pycharm" class="md-nav__link">PyCharm</a>
+        </li>
+        <li class="md-nav__item"><a href="#rose" class="md-nav__link">Rose</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#developing-fab-at-the-met-office" class="md-nav__link">Developing Fab at the Met Office</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#acceptance-tests" class="md-nav__link">Acceptance tests</a>
+        </li>
+        <li class="md-nav__item"><a href="#build-singularity-image" class="md-nav__link">Build singularity image</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/metoffice.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="using-fab-at-the-met-office">
+<span id="metofficeusage"></span><h1 id="metoffice--page-root">Using Fab at the Met Office<a class="headerlink" href="#metoffice--page-root" title="Permalink to this heading">¶</a></h1>
+<p>For users working on Met Office desktop systems the following instructions may
+prove useful.</p>
+<section id="using-fab">
+<h2 id="using-fab">Using Fab<a class="headerlink" href="#using-fab" title="Permalink to this heading">¶</a></h2>
+<p>If you just want to use Fab to build your source then there are a number of
+fairly simple approaches.</p>
+<section id="fortran-only">
+<h3 id="fortran-only">Fortran Only<a class="headerlink" href="#fortran-only" title="Permalink to this heading">¶</a></h3>
+<p>If you don’t need to build C, you can use the modules in the “extra
+software” collection:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>use<span class="w"> </span><span class="nv">$EXTRA_SOFTWARE_MODULE_DIR</span>
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>python/3.7.0<span class="w"> </span>support/fparser/0.0.16/python/3.7.0<span class="w"> </span>fab/1.0.0/python/3.7.0
+</pre></div>
+</div>
+<p>The Science I.T. group can provide the <cite>EXTRA_SOFTWARE</cite> path.</p>
+<p>With the “fab” module loaded the <cite>fab</cite> command will be available and Fab based
+build scripts will function.</p>
+</section>
+<section id="fortran-and-c">
+<h3 id="fortran-and-c">Fortran and C<a class="headerlink" href="#fortran-and-c" title="Permalink to this heading">¶</a></h3>
+<p>If you need to build C, or you use conda environments anyway you can use the
+<a class="reference internal" href="environment.html#anaconda"><span class="std std-ref">Conda</span></a> route to Fab-ulousness.</p>
+<p>You will need to authenticate with Artifactory the first time you use Conda.
+There is information regarding this on MetNet or ask Science I.T.</p>
+</section>
+<section id="singularity-container">
+<span id="run-singularity"></span><h3 id="singularity-container">Singularity Container<a class="headerlink" href="#singularity-container" title="Permalink to this heading">¶</a></h3>
+<p>You can run Fab in a singularity container as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>singularity run oras://$URL/metomi/fab/MyImage:latest
+</pre></div>
+</div>
+<p>The necessary URL is that normally used with singularity. Ask Science I.T. for
+details.</p>
+<p>If you need to use git from within the container, you’ll need to set a couple of environment variables first:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export SINGULARITY_BIND="/etc/pki/ca-trust/extracted/pem:/pem"
+$ export SINGULARITYENV_GIT_SSL_CAPATH="/pem"
+$ singularity shell oras://$URL/fab/MyImage:latest
+</pre></div>
+</div>
+<p>See also <a class="reference internal" href="development.html#build-singularity"><span class="std std-ref">Instructions for building the image</span></a>.</p>
+</section>
+</section>
+<section id="developing-fab">
+<h2 id="developing-fab">Developing Fab<a class="headerlink" href="#developing-fab" title="Permalink to this heading">¶</a></h2>
+<p>If you want to develop Fab then there are some additional steps which may be
+needed.</p>
+<section id="mixing-virtual-environment-and-environment-modules">
+<h3 id="mixing-virtual-environment-and-environment-modules">Mixing Virtual Environment and Environment Modules<a class="headerlink" href="#mixing-virtual-environment-and-environment-modules" title="Permalink to this heading">¶</a></h3>
+<p>If you prefer to use the built-in Python virtual environment tool for
+development you can combine it with the “extra software” modules. The
+complication comes because they already make use of such an environment.</p>
+<p>First load the environment you want to use to compile your software. The LFRic
+environment is used as an example.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>use<span class="w"> </span><span class="nv">$EXTRA_SOFTWARE</span>
+<span class="gp">$ </span>module<span class="w"> </span>use<span class="w"> </span><span class="nv">$LFRIC_SOFTWARE</span>
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>environment/lfric/ifort
+</pre></div>
+</div>
+<p>Then create a new virtual environment, unload the existing one and activate
+the new.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span><span class="nv">$VENV_DIR</span>/fab_dev
+<span class="gp">$ </span>module<span class="w"> </span>unload<span class="w"> </span>python/3.7.0
+<span class="gp">$ </span><span class="nb">source</span><span class="w"> </span><span class="nv">$VENV_DIR</span>/fab_dev/bin/activate
+</pre></div>
+</div>
+<p>Install all the bits needed to install PSyclone and other parts of the build
+process.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>Jinja2
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>six
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>fparser
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>pyparsing
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>sympy
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">jsonschema</span><span class="o">==</span><span class="m">3</span>.0.2
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>configparser
+</pre></div>
+</div>
+<p>Finally, install Fab in your working copy. This is done in “editable” mode
+so that changes you make are immediately available through the environment.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>--editable<span class="w"> </span><span class="nv">$FAB_WORKING_COPY</span>
+</pre></div>
+</div>
+</section>
+<section id="mixing-conda-and-environemnt-modules">
+<h3 id="mixing-conda-and-environemnt-modules">Mixing Conda and Environemnt Modules<a class="headerlink" href="#mixing-conda-and-environemnt-modules" title="Permalink to this heading">¶</a></h3>
+<p>In order to have both an environment capable of building C files and modern
+Fortran compilers and the LFRic library stack you will need an awkward
+amalgemation of conda environment and environment modules.</p>
+<p>The conda environment is created as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>envs/conda/dev_env.yml
+<span class="gp">$ </span>conda<span class="w"> </span>activate<span class="w"> </span>sci-fab
+</pre></div>
+</div>
+<p>Then <a class="reference internal" href="install.html#install"><span class="std std-ref">install fab</span></a>. This is done before any module commands.</p>
+<p>The environment is set up <em>in a new terminal</em> as follows:</p>
+<p>For use with gfortran:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>use<span class="w"> </span><span class="nv">$LFRIC_MODULES</span>
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>environment/lfric/gcc
+<span class="gp">$ </span>conda<span class="w"> </span>activate<span class="w"> </span>sci-fab
+<span class="gp">$ </span><span class="nv">PYTHONPATH</span><span class="o">=</span>~/.conda/envs/sci-fab/lib/python3.7/site-packages:<span class="nv">$PYTHONPATH</span>
+</pre></div>
+</div>
+<p>For use with ifort:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>use<span class="w"> </span><span class="nv">$LFRIC_MODULES</span>
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>environment/lfric/ifort
+<span class="gp">$ </span>conda<span class="w"> </span>activate<span class="w"> </span>sci-fab
+<span class="gp">$ </span><span class="nv">PYTHONPATH</span><span class="o">=</span>~/.conda/envs/sci-fab/lib/python3.7/site-packages:<span class="nv">$PYTHONPATH</span>
+</pre></div>
+</div>
+</section>
+<section id="pycharm">
+<h3 id="pycharm">PyCharm<a class="headerlink" href="#pycharm" title="Permalink to this heading">¶</a></h3>
+<p>Running <code class="docutils literal notranslate"><span class="pre">pycharm-community</span></code> from the command line, after activating an
+environment using any of the above approaches, PyCharm will be able to run Fab,
+the tests, etc.
+You can <a class="reference external" href="https://www.jetbrains.com/help/pycharm/configuring-python-interpreter.html">set the project interpreter</a>
+to be that in the conda environment.</p>
+</section>
+<section id="rose">
+<h3 id="rose">Rose<a class="headerlink" href="#rose" title="Permalink to this heading">¶</a></h3>
+<p>Various configs for building projects using Rose on SPICE can be found in
+<a class="reference external" href="https://github.com/metomi/fab/tree/master/run_configs">run_configs</a>.</p>
+</section>
+</section>
+</section>
+<section id="developing-fab-at-the-met-office">
+<span id="metofficedevelopment"></span><h1 id="developing-fab-at-the-met-office">Developing Fab at the Met Office<a class="headerlink" href="#developing-fab-at-the-met-office" title="Permalink to this heading">¶</a></h1>
+<p>A few special notes for Met Office developers.</p>
+<section id="acceptance-tests">
+<h2 id="acceptance-tests">Acceptance tests<a class="headerlink" href="#acceptance-tests" title="Permalink to this heading">¶</a></h2>
+<p>For extra confidence, we have acceptance tests in the <code class="docutils literal notranslate"><span class="pre">run_configs</span></code> folder
+which are not run as part of our automated github testing. You can run them on
+the VDI using <code class="docutils literal notranslate"><span class="pre">build_all.py</span></code>. However, this will choke your machine for some
+time. There’s a (misnamed) cron you can run nightly, <code class="docutils literal notranslate"><span class="pre">run_configs/_cron/cron_system_tests.sh</span></code>.</p>
+<p>There’s also a rose suite which runs them on spice in <code class="docutils literal notranslate"><span class="pre">run_configs/_rose_all</span></code>.</p>
+</section>
+<section id="build-singularity-image">
+<h2 id="build-singularity-image">Build singularity image<a class="headerlink" href="#build-singularity-image" title="Permalink to this heading">¶</a></h2>
+<p>The config file in envs/picasso defines the contents of a Singularity image
+which is built by the experimental Picasso app. We can build this image using a
+GitHub action, defined in <code class="docutils literal notranslate"><span class="pre">.github/workflows/picasso_build.yml</span></code>.</p>
+<p>This action is manually triggered. You have to push a branch to the metomi repo,
+not a fork, then you can trigger the action from your branch. Please remember
+to clean up the branch when you’re finished.</p>
+<p>You can see the image in artefactory
+<a class="reference external" href="https://metoffice.jfrog.io/ui/repos/tree/General/docker-local/picasso/metomi/fab/MyImage">here</a>.</p>
+<p>See also
+* <a class="reference internal" href="#run-singularity"><span class="std std-ref">Run Singularity</span></a>
+* <a class="reference external" href="https://metoffice.sharepoint.com/sites/scienceitteam/SitePages/Picasso.aspx">Picasso</a></p>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="environment.html" title="Environment"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Environment </span>
+              </div>
+            </a>
+          
+          
+            <a href="config_intro.html" title="Introduction to Configuration"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Introduction to Configuration </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2023.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

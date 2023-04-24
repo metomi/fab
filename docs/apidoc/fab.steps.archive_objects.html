@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>fab.steps.archive_objects module &#8212; fab 1.1.dev0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fab.steps.c_pragma_injector module" href="fab.steps.c_pragma_injector.html" />
+    <link rel="prev" title="fab.steps.analyse module" href="fab.steps.analyse.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#apidoc/fab.steps.archive_objects" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="fab 1.1.dev0 documentation"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">fab 1.1.dev0 documentation</span>
+          <span class="md-header-nav__topic"> fab.steps.archive_objects module </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">fab 1.1.dev0 documentation</a></li>
+          <li class="md-tabs__item"><a href="modules.html" class="md-tabs__link">fab</a></li>
+          <li class="md-tabs__item"><a href="fab.html" class="md-tabs__link">fab package</a></li>
+          <li class="md-tabs__item"><a href="fab.steps.html" class="md-tabs__link">fab.steps package</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="fab 1.1.dev0 documentation" class="md-nav__button md-logo">
+      
+        <img src="../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="fab 1.1.dev0 documentation">fab 1.1.dev0 documentation</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Contents:</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../install.html" class="md-nav__link">Installing Fab</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../environment.html" class="md-nav__link">Environment</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../metoffice.html" class="md-nav__link">Using Fab at the Met Office</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../metoffice.html#developing-fab-at-the-met-office" class="md-nav__link">Developing Fab at the Met Office</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../config_intro.html" class="md-nav__link">Introduction to Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../writing_config.html" class="md-nav__link">How to Write a Build Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../advanced_config.html" class="md-nav__link">Advanced Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../features.html" class="md-nav__link">Features</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="modules.html" class="md-nav__link">Api Reference</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../development.html" class="md-nav__link">Developer’s guide</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../glossary.html" class="md-nav__link">Glossary</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../genindex.html" class="md-nav__link">Index</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../py-modindex.html" class="md-nav__link">Python Module Index</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#apidoc-fab-steps-archive-objects--page-root" class="md-nav__link">fab.steps.archive_objects module</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#fab.steps.archive_objects.archive_objects" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">archive_objects()</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/apidoc/fab.steps.archive_objects.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="module-fab.steps.archive_objects">
+<span id="fab-steps-archive-objects-module"></span><h1 id="apidoc-fab-steps-archive-objects--page-root">fab.steps.archive_objects module<a class="headerlink" href="#apidoc-fab-steps-archive-objects--page-root" title="Permalink to this heading">¶</a></h1>
+<p>Object archive creation from a list of object files for use in static linking.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.steps.archive_objects.archive_objects">
+<span class="sig-prename descclassname"><span class="pre">fab.steps.archive_objects.</span></span><span class="sig-name descname"><span class="pre">archive_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archiver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_fpath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_collection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'object</span> <span class="pre">archives'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.steps.archive_objects.archive_objects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an object archive for every build target, from their object files.</p>
+<p>An object archive is a set of object (<em>.o</em>) files bundled into a single file, typically with a <em>.a</em> extension.</p>
+<p>Expects one or more build targets from its artefact getter, of the form Dict[name, object_files].
+By default, it finds the build targets and their object files in the artefact collection named by
+<code class="xref py py-const docutils literal notranslate"><span class="pre">fab.constants.COMPILED_FILES</span></code>.</p>
+<p>This step has three use cases:</p>
+<ul class="simple">
+<li><p>The <strong>object archive</strong> is the end goal of the build.</p></li>
+<li><p>The object archive is a convenience step before linking a <strong>shared object</strong>.</p></li>
+<li><p>One or more object archives as convenience steps before linking <strong>executables</strong>.</p></li>
+</ul>
+<p>The benefit of creating an object archive before linking is simply to reduce the size
+of the linker command, which might otherwise include thousands of .o files, making any error output
+difficult to read. You don’t have to use this step before linking.
+The linker step has a default artefact getter which will work with or without this preceding step.</p>
+<p><strong>Creating a Static or Shared Library:</strong></p>
+<p>When building a library there is expected to be a single build target with a <cite>None</cite> name.
+This typically happens when configuring the <code class="xref py py-class docutils literal notranslate"><span class="pre">Analyser</span></code> step <em>without</em> a root symbol.
+We can assume the list of object files is the entire project source, compiled.</p>
+<p>In this case you must specify an <em>output_fpath</em>.</p>
+<p><strong>Creating Executables:</strong></p>
+<p>When creating executables, there is expected to be one or more build targets, each with a name.
+This typically happens when configuring the <code class="xref py py-class docutils literal notranslate"><span class="pre">Analyser</span></code> step <em>with</em> a root symbol(s).
+We can assume each list of object files is sufficient to build each <em>&lt;root_symbol&gt;.exe</em>.</p>
+<p>In this case you cannot specify an <em>output_fpath</em> path because they are automatically created from the
+target name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<a class="reference internal" href="fab.build_config.html#fab.build_config.BuildConfig" title="fab.build_config.BuildConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BuildConfig</span></code></a>) – The <a class="reference internal" href="fab.build_config.html#fab.build_config.BuildConfig" title="fab.build_config.BuildConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fab.build_config.BuildConfig</span></code></a> object where we can read settings
+such as the project workspace folder or the multiprocessing flag.</p></li>
+<li><p><strong>source</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="fab.artefacts.html#fab.artefacts.ArtefactsGetter" title="fab.artefacts.ArtefactsGetter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtefactsGetter</span></code></a>]) – (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)
+An <a class="reference internal" href="fab.artefacts.html#fab.artefacts.ArtefactsGetter" title="fab.artefacts.ArtefactsGetter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtefactsGetter</span></code></a> which give us our lists of objects to archive.
+The artefacts are expected to be of the form <cite>Dict[root_symbol_name, list_of_object_files]</cite>.</p></li>
+<li><p><strong>archiver</strong> – (default: <code class="docutils literal notranslate"><span class="pre">'ar'</span></code>)
+The archiver executable. Defaults to ‘ar’.</p></li>
+<li><p><strong>output_fpath</strong> – <p>(default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)
+The file path of the archive file to create.
+This string can include templating, where “$output” is replaced with the output folder.</p>
+<ul>
+<li><p>Must be specified when building a library file (no build target name).</p></li>
+<li><p>Must not be specified when building linker input (one or more build target names).</p></li>
+</ul>
+</p></li>
+<li><p><strong>output_collection</strong> – (default: <code class="docutils literal notranslate"><span class="pre">'object</span> <span class="pre">archives'</span></code>)
+The name of the artefact collection to create. Defaults to the name in
+<code class="xref py py-const docutils literal notranslate"><span class="pre">fab.constants.OBJECT_ARCHIVES</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="fab.steps.analyse.html" title="fab.steps.analyse module"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> fab.steps.analyse module </span>
+              </div>
+            </a>
+          
+          
+            <a href="fab.steps.c_pragma_injector.html" title="fab.steps.c_pragma_injector module"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> fab.steps.c_pragma_injector module </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2023.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

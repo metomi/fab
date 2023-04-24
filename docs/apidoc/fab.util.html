@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>fab.util module &#8212; fab 1.1.dev0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Developer’s guide" href="../development.html" />
+    <link rel="prev" title="fab.tools module" href="fab.tools.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#apidoc/fab.util" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="fab 1.1.dev0 documentation"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">fab 1.1.dev0 documentation</span>
+          <span class="md-header-nav__topic"> fab.util module </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">fab 1.1.dev0 documentation</a></li>
+          <li class="md-tabs__item"><a href="modules.html" class="md-tabs__link">fab</a></li>
+          <li class="md-tabs__item"><a href="fab.html" class="md-tabs__link">fab package</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="fab 1.1.dev0 documentation" class="md-nav__button md-logo">
+      
+        <img src="../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="fab 1.1.dev0 documentation">fab 1.1.dev0 documentation</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Contents:</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../install.html" class="md-nav__link">Installing Fab</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../environment.html" class="md-nav__link">Environment</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../metoffice.html" class="md-nav__link">Using Fab at the Met Office</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../metoffice.html#developing-fab-at-the-met-office" class="md-nav__link">Developing Fab at the Met Office</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../config_intro.html" class="md-nav__link">Introduction to Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../writing_config.html" class="md-nav__link">How to Write a Build Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../advanced_config.html" class="md-nav__link">Advanced Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../features.html" class="md-nav__link">Features</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="modules.html" class="md-nav__link">Api Reference</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../development.html" class="md-nav__link">Developer’s guide</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../glossary.html" class="md-nav__link">Glossary</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../genindex.html" class="md-nav__link">Index</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../py-modindex.html" class="md-nav__link">Python Module Index</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#apidoc-fab-util--page-root" class="md-nav__link">fab.util module</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#fab.util.log_or_dot" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">log_or_dot()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.log_or_dot_finish" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">log_or_dot_finish()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.HashedFile" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">HashedFile</span></code></a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#fab.util.HashedFile.file_hash" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">HashedFile.file_hash</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.HashedFile.fpath" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">HashedFile.fpath</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.file_checksum" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">file_checksum()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.string_checksum" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">string_checksum()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.file_walk" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">file_walk()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.Timer" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Timer</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.TimerLogger" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">TimerLogger</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.CompiledFile" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">CompiledFile</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.input_to_output_fpath" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">input_to_output_fpath()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.suffix_filter" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">suffix_filter()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.by_type" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">by_type()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.get_fab_workspace" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">get_fab_workspace()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.get_prebuild_file_groups" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">get_prebuild_file_groups()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.util.common_arg_parser" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">common_arg_parser()</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/apidoc/fab.util.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="module-fab.util">
+<span id="fab-util-module"></span><h1 id="apidoc-fab-util--page-root">fab.util module<a class="headerlink" href="#apidoc-fab-util--page-root" title="Permalink to this heading">¶</a></h1>
+<p>Various utility functions live here - until we give them a proper place to live!</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.util.log_or_dot">
+<span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">log_or_dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.log_or_dot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Util function which prints a fullstop without a newline, except in debug logging where it logs a message.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.util.log_or_dot_finish">
+<span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">log_or_dot_finish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.log_or_dot_finish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Util function which completes the row of fullstops from <a class="reference internal" href="#fab.util.log_or_dot" title="fab.util.log_or_dot"><code class="xref py py-func docutils literal notranslate"><span class="pre">log_or_dot()</span></code></a>,
+by printing a newline when not in debug logging.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="fab.util.HashedFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">HashedFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_hash</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.HashedFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>Create new instance of HashedFile(fpath, file_hash)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fab.util.HashedFile.file_hash">
+<span class="sig-name descname"><span class="pre">file_hash</span></span><a class="headerlink" href="#fab.util.HashedFile.file_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fab.util.HashedFile.fpath">
+<span class="sig-name descname"><span class="pre">fpath</span></span><a class="headerlink" href="#fab.util.HashedFile.fpath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.util.file_checksum">
+<span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">file_checksum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.file_checksum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a checksum of the given file.</p>
+<p>This function is deterministic, returning the same result across Python invocations.</p>
+<p>We use crc32 for now because it’s deterministic, unlike out-the-box hash.
+We could seed hash with a non-random or look into hashlib, if/when we want to improve this.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.util.string_checksum">
+<span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">string_checksum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.string_checksum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a checksum of the given string.</p>
+<p>This function is deterministic, returning the same result across Python invocations.</p>
+<p>We use crc32 for now because it’s deterministic, unlike out-the-box hash.
+We could seed hash with a non-random or look into hashlib, if/when we want to improve this.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.util.file_walk">
+<span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">file_walk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_folders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.file_walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return every file in <em>path</em> and its sub-folders.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]) – Folder to iterate.</p></li>
+<li><p><strong>ignore_folders</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]]) – (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)
+Pass in any folder if you don’t want to traverse into. Please see explanation and intended use, below.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterator</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The prebuild folder can contain multiple versions of a single, generated fortran file,
+created by multiple runs of the build config. The prebuild folder stores these copies for when they’re next
+needed, when they are copied out and reused. We usually won’t want to include this folder when
+searching for source code to analyse.
+To meet these needs, this function will not traverse into the given folders, if provided.</p>
+</div>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="fab.util.Timer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">Timer</span></span><a class="headerlink" href="#fab.util.Timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A simple timing context manager.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="fab.util.TimerLogger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">TimerLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.TimerLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fab.util.Timer" title="fab.util.Timer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timer</span></code></a></p>
+<p>A labelled timing context manager which logs the label and the time taken.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="fab.util.CompiledFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">CompiledFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_fpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.CompiledFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A Fortran or C file which has been compiled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_fpath</strong> – The file that was compiled.</p></li>
+<li><p><strong>output_fpath</strong> – The object file that was created.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.util.input_to_output_fpath">
+<span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">input_to_output_fpath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.input_to_output_fpath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a path in the project’s source folder to the equivalent path in the output folder.</p>
+<p>Allows the given path to already be in the output folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> – The config object, which defines the source and output folders.</p></li>
+<li><p><strong>input_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>) – The path to transform from input to output folders.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Note: This function can also handle paths which are not in the project workspace at all.
+This can happen when pointing the FindFiles step elsewhere, for example.
+In that case, the entire path will be made relative to the source folder instead of its anchor.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.util.suffix_filter">
+<span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">suffix_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpaths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffixes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.suffix_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pull out all the paths with a given suffix from an iterable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fpaths</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]) – Iterable of paths.</p></li>
+<li><p><strong>suffixes</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – Iterable of suffixes we want.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.util.by_type">
+<span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">by_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.by_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find all the elements of an iterable which are of a given type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iterable</strong> – The iterable to search.</p></li>
+<li><p><strong>cls</strong> – The type of the elements we want.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.util.get_fab_workspace">
+<span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">get_fab_workspace</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.get_fab_workspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the Fab workspace from the <cite>FAB_WORKSPACE</cite> environment variable,
+defaulting to <em>~/fab-workspace</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.util.get_prebuild_file_groups">
+<span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">get_prebuild_file_groups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prebuild_files</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.get_prebuild_file_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Group prebuild filenames by originating artefact.</p>
+<p>Prebuild filenames have the form <cite>&lt;stem&gt;.&lt;hash&gt;.&lt;suffix&gt;</cite>.
+This function creates a dict with wildcard key <cite>&lt;stem&gt;.*.&lt;suffix&gt;</cite>
+with each entry mapping to a set of all matching prebuild files.</p>
+<p>Given the input files <em>my_mod.123.o</em> and <em>my_mod.456.o</em>,
+returns a dict {‘my_mod.*.o’: {‘my_mod.123.o’, ‘my_mod.456.o’}}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Set" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Set</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.util.common_arg_parser">
+<span class="sig-prename descclassname"><span class="pre">fab.util.</span></span><span class="sig-name descname"><span class="pre">common_arg_parser</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fab.util.common_arg_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>A helper function returning an argument parser with common, useful arguments controlling command line tools.</p>
+<p>More arguments can be added. The caller must call <cite>parse_args</cite> on the returned parser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArgumentParser</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="fab.tools.html" title="fab.tools module"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> fab.tools module </span>
+              </div>
+            </a>
+          
+          
+            <a href="../development.html" title="Developer’s guide"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Developer’s guide </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2023.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

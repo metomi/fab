@@ -1,0 +1,839 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Advanced Configuration &#8212; fab 1.1.dev0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Features" href="features.html" />
+    <link rel="prev" title="How to Write a Build Configuration" href="writing_config.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#advanced_config" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="index.html" title="fab 1.1.dev0 documentation"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">fab 1.1.dev0 documentation</span>
+          <span class="md-header-nav__topic"> Advanced Configuration </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = ""versions.json"",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">fab 1.1.dev0 documentation</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="index.html" title="fab 1.1.dev0 documentation" class="md-nav__button md-logo">
+      
+        <img src="_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="index.html"
+       title="fab 1.1.dev0 documentation">fab 1.1.dev0 documentation</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Contents:</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="install.html" class="md-nav__link">Installing Fab</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="environment.html" class="md-nav__link">Environment</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="metoffice.html" class="md-nav__link">Using Fab at the Met Office</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="metoffice.html#developing-fab-at-the-met-office" class="md-nav__link">Developing Fab at the Met Office</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="config_intro.html" class="md-nav__link">Introduction to Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="writing_config.html" class="md-nav__link">How to Write a Build Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> Advanced Configuration </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">Advanced Configuration</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#advanced-config--page-root" class="md-nav__link">Advanced Configuration</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#understanding-the-environment" class="md-nav__link">Understanding the Environment</a>
+        </li>
+        <li class="md-nav__item"><a href="#configuration-reuse" class="md-nav__link">Configuration Reuse</a>
+        </li>
+        <li class="md-nav__item"><a href="#separate-grab-and-build-scripts" class="md-nav__link">Separate grab and build scripts</a>
+        </li>
+        <li class="md-nav__item"><a href="#housekeeping" class="md-nav__link">Housekeeping</a>
+        </li>
+        <li class="md-nav__item"><a href="#sharing-prebuilds" class="md-nav__link">Sharing Prebuilds</a>
+        </li>
+        <li class="md-nav__item"><a href="#psykalight-psyclone-overrides" class="md-nav__link">PSyKAlight (PSyclone overrides)</a>
+        </li>
+        <li class="md-nav__item"><a href="#two-stage-compilation" class="md-nav__link">Two-Stage Compilation</a>
+        </li>
+        <li class="md-nav__item"><a href="#managed-arguments" class="md-nav__link">Managed arguments</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#fortran-preprocessors" class="md-nav__link">Fortran Preprocessors</a>
+        </li>
+        <li class="md-nav__item"><a href="#fortran-compilers" class="md-nav__link">Fortran Compilers</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#tool-arguments" class="md-nav__link">Tool arguments</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#linker-flags" class="md-nav__link">Linker flags</a>
+        </li>
+        <li class="md-nav__item"><a href="#path-specific-flags" class="md-nav__link">Path-specific flags</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#folder-structure" class="md-nav__link">Folder Structure</a>
+        </li>
+        <li class="md-nav__item"><a href="#c-pragma-injector" class="md-nav__link">C Pragma Injector</a>
+        </li>
+        <li class="md-nav__item"><a href="#custom-steps" class="md-nav__link">Custom Steps</a>
+        </li>
+        <li class="md-nav__item"><a href="#collection-names" class="md-nav__link">Collection names</a>
+        </li>
+        <li class="md-nav__item"><a href="#parser-workarounds" class="md-nav__link">Parser Workarounds</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#unrecognised-dependencies" class="md-nav__link">Unrecognised Dependencies</a>
+        </li>
+        <li class="md-nav__item"><a href="#unparsable-files" class="md-nav__link">Unparsable Files</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#custom-step" class="md-nav__link">Custom Step</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/advanced_config.rst.txt">Show Source</a> </li>
+
+  </ul>
+</nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="features.html" class="md-nav__link">Features</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="apidoc/modules.html" class="md-nav__link">Api Reference</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="development.html" class="md-nav__link">Developer’s guide</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="glossary.html" class="md-nav__link">Glossary</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="genindex.html" class="md-nav__link">Index</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="py-modindex.html" class="md-nav__link">Python Module Index</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#advanced-config--page-root" class="md-nav__link">Advanced Configuration</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#understanding-the-environment" class="md-nav__link">Understanding the Environment</a>
+        </li>
+        <li class="md-nav__item"><a href="#configuration-reuse" class="md-nav__link">Configuration Reuse</a>
+        </li>
+        <li class="md-nav__item"><a href="#separate-grab-and-build-scripts" class="md-nav__link">Separate grab and build scripts</a>
+        </li>
+        <li class="md-nav__item"><a href="#housekeeping" class="md-nav__link">Housekeeping</a>
+        </li>
+        <li class="md-nav__item"><a href="#sharing-prebuilds" class="md-nav__link">Sharing Prebuilds</a>
+        </li>
+        <li class="md-nav__item"><a href="#psykalight-psyclone-overrides" class="md-nav__link">PSyKAlight (PSyclone overrides)</a>
+        </li>
+        <li class="md-nav__item"><a href="#two-stage-compilation" class="md-nav__link">Two-Stage Compilation</a>
+        </li>
+        <li class="md-nav__item"><a href="#managed-arguments" class="md-nav__link">Managed arguments</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#fortran-preprocessors" class="md-nav__link">Fortran Preprocessors</a>
+        </li>
+        <li class="md-nav__item"><a href="#fortran-compilers" class="md-nav__link">Fortran Compilers</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#tool-arguments" class="md-nav__link">Tool arguments</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#linker-flags" class="md-nav__link">Linker flags</a>
+        </li>
+        <li class="md-nav__item"><a href="#path-specific-flags" class="md-nav__link">Path-specific flags</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#folder-structure" class="md-nav__link">Folder Structure</a>
+        </li>
+        <li class="md-nav__item"><a href="#c-pragma-injector" class="md-nav__link">C Pragma Injector</a>
+        </li>
+        <li class="md-nav__item"><a href="#custom-steps" class="md-nav__link">Custom Steps</a>
+        </li>
+        <li class="md-nav__item"><a href="#collection-names" class="md-nav__link">Collection names</a>
+        </li>
+        <li class="md-nav__item"><a href="#parser-workarounds" class="md-nav__link">Parser Workarounds</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#unrecognised-dependencies" class="md-nav__link">Unrecognised Dependencies</a>
+        </li>
+        <li class="md-nav__item"><a href="#unparsable-files" class="md-nav__link">Unparsable Files</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#custom-step" class="md-nav__link">Custom Step</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/advanced_config.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="advanced-configuration">
+<span id="advanced-config"></span><h1 id="advanced-config--page-root">Advanced Configuration<a class="headerlink" href="#advanced-config--page-root" title="Permalink to this heading">¶</a></h1>
+<p>A lot can be achieved with simple configurations but some of the more esoteric
+aspects of software building may require more esoteric Fab features.</p>
+<section id="understanding-the-environment">
+<span id="env-vars"></span><h2 id="understanding-the-environment">Understanding the Environment<a class="headerlink" href="#understanding-the-environment" title="Permalink to this heading">¶</a></h2>
+<p>Fab uses well-known environment variables to identify tools and configure them.</p>
+<table id="id3">
+<caption><span class="caption-text">Environment variables</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>FPP</p></td>
+<td><p>Fortran preprocessor, e.g <code class="docutils literal notranslate"><span class="pre">fpp</span></code> or <code class="docutils literal notranslate"><span class="pre">cpp</span> <span class="pre">-traditional-cpp</span> <span class="pre">-P</span></code>.
+Fab imposes the <code class="docutils literal notranslate"><span class="pre">-P</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>FC</p></td>
+<td><p>Fortran compiler, e.g <code class="docutils literal notranslate"><span class="pre">gfortran</span></code> or <code class="docutils literal notranslate"><span class="pre">ifort</span> <span class="pre">-c</span></code>.
+Fab imposes the <code class="docutils literal notranslate"><span class="pre">-c</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FFLAGS</p></td>
+<td><p>Fortran compiler flags..</p></td>
+</tr>
+<tr class="row-even"><td><p>CC</p></td>
+<td><p>C compiler.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CFLAGS</p></td>
+<td><p>C compiler flags.</p></td>
+</tr>
+<tr class="row-even"><td><p>LD</p></td>
+<td><p>Linker, e.g <code class="docutils literal notranslate"><span class="pre">ld</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>LFLAGS</p></td>
+<td><p>Linker flags.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="configuration-reuse">
+<h2 id="configuration-reuse">Configuration Reuse<a class="headerlink" href="#configuration-reuse" title="Permalink to this heading">¶</a></h2>
+<p>If you find you have multiple build configurations with duplicated code, it
+could be helpful to factor out the commonality into a shared module. Remember,
+your build configuration is just a Python script at the end of the day.</p>
+<p>In Fab’s
+<a class="reference external" href="https://github.com/metomi/fab/tree/master/run_configs">example configurations</a>,
+we have two build scripts to compile GCOM. Much of the configuration for these
+two scripts is identical. We extracted the common steps into
+<a class="reference external" href="https://github.com/metomi/fab/blob/master/run_configs/gcom/gcom_build_steps.py">gcom_build_steps.py</a>
+and used them in
+<a class="reference external" href="https://github.com/metomi/fab/blob/master/run_configs/gcom/build_gcom_ar.py">build_gcom_ar.py</a>
+and
+<a class="reference external" href="https://github.com/metomi/fab/blob/master/run_configs/gcom/build_gcom_so.py">build_gcom_so.py</a>.</p>
+</section>
+<section id="separate-grab-and-build-scripts">
+<h2 id="separate-grab-and-build-scripts">Separate grab and build scripts<a class="headerlink" href="#separate-grab-and-build-scripts" title="Permalink to this heading">¶</a></h2>
+<p>If you are running many builds from the same source, you may wish to grab your
+repo in a separate script and call it less frequently.</p>
+<p>In this case your grab script might only contain a single step. You could
+import your grab configuration to find out where it put the source.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">my_grab.py</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">my_grab_config</span> <span class="o">=</span> <span class="n">BuildConfig</span><span class="p">(</span><span class="n">project_label</span><span class="o">=</span><span class="s1">'&lt;project_label&gt;'</span><span class="p">)</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="k">with</span> <span class="n">my_grab_config</span><span class="p">:</span>
+<span class="linenos">5</span>        <span class="n">fcm_export</span><span class="p">(</span><span class="n">my_grab_config</span><span class="p">,</span> <span class="n">src</span><span class="o">=</span><span class="s1">'my_repo'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">my_build.py</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">my_grab</span> <span class="kn">import</span> <span class="n">my_grab_config</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<span class="linenos">5</span>    <span class="k">with</span> <span class="n">BuildConfig</span><span class="p">(</span><span class="n">project_label</span><span class="o">=</span><span class="s1">'&lt;project_label&gt;'</span><span class="p">)</span> <span class="k">as</span> <span class="n">state</span><span class="p">:</span>
+<span class="hll"><span class="linenos">6</span>        <span class="n">grab_folder</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">src</span><span class="o">=</span><span class="n">grab_config</span><span class="o">.</span><span class="n">source_root</span><span class="p">),</span>
+</span></pre></div>
+</div>
+</div>
+</section>
+<section id="housekeeping">
+<h2 id="housekeeping">Housekeeping<a class="headerlink" href="#housekeeping" title="Permalink to this heading">¶</a></h2>
+<p>Fab will remove old files from the prebuilds folder. It will remove all prebuild files that are not part of the current build by default.</p>
+<p>If you add a <a class="reference internal" href="apidoc/fab.steps.cleanup_prebuilds.html#fab.steps.cleanup_prebuilds.cleanup_prebuilds" title="fab.steps.cleanup_prebuilds.cleanup_prebuilds"><code class="xref py py-func docutils literal notranslate"><span class="pre">cleanup_prebuilds()</span></code></a> step, you
+can keep prebuild files for longer. This may be useful, for example, if you
+often switch between two versions of your code and want to keep the prebuild
+speed benefits when building both.</p>
+</section>
+<section id="sharing-prebuilds">
+<h2 id="sharing-prebuilds">Sharing Prebuilds<a class="headerlink" href="#sharing-prebuilds" title="Permalink to this heading">¶</a></h2>
+<p>You can copy the contents of someone else’s prebuilds folder into your own.</p>
+<p>Fab uses hashes to keep track of the correct prebuilt files, and will find and
+use them. There’s also a helper step called
+<a class="reference internal" href="apidoc/fab.steps.grab.prebuild.html#fab.steps.grab.prebuild.grab_pre_build" title="fab.steps.grab.prebuild.grab_pre_build"><code class="xref py py-func docutils literal notranslate"><span class="pre">grab_pre_build()</span></code></a> you can add to your build
+configurations.</p>
+</section>
+<section id="psykalight-psyclone-overrides">
+<h2 id="psykalight-psyclone-overrides">PSyKAlight (PSyclone overrides)<a class="headerlink" href="#psykalight-psyclone-overrides" title="Permalink to this heading">¶</a></h2>
+<p>If you need to override a PSyclone output file with a handcrafted version
+you can use the <code class="docutils literal notranslate"><span class="pre">overrides_folder</span></code> argument to the
+<a class="reference internal" href="apidoc/fab.steps.psyclone.html#fab.steps.psyclone.psyclone" title="fab.steps.psyclone.psyclone"><code class="xref py py-func docutils literal notranslate"><span class="pre">psyclone()</span></code></a> step.</p>
+<p>This specifies a normal folder containing source files. The step will delete
+any files it creates if there’s a matching filename in the overrides folder.</p>
+</section>
+<section id="two-stage-compilation">
+<h2 id="two-stage-compilation">Two-Stage Compilation<a class="headerlink" href="#two-stage-compilation" title="Permalink to this heading">¶</a></h2>
+<dl class="simple">
+<dt>The <a class="reference internal" href="apidoc/fab.steps.compile_fortran.html#fab.steps.compile_fortran.compile_fortran" title="fab.steps.compile_fortran.compile_fortran"><code class="xref py py-func docutils literal notranslate"><span class="pre">compile_fortran()</span></code></a> step compiles files in</dt><dd><p>passes, with each pass identifying all the files which can be compiled next,
+and compiling them in parallel.</p>
+</dd>
+</dl>
+<p>Some projects have bottlenecks in their compile order, where lots of files are
+stuck behind a single file which is slow to compile. Inspired by
+<a class="reference external" href="https://www.osti.gov/biblio/1393322">Busby</a>, Fab can perform two-stage
+compilation where all the modules are built first in <em>fast passes</em> using the
+<cite>-fsyntax-only</cite> flag, and then all the slower object compilation can follow in
+a single pass.</p>
+<p>The <em>potential</em> benefit is that the bottleneck is shortened, but there is a
+tradeoff with having to run through all the files twice. Some compilers might
+not have this capability.</p>
+<p>Two-stage compilation is configured with the <cite>two_stage_flag</cite> argument to the
+Fortran compiler.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">compile_fortran</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">two_stage_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="managed-arguments">
+<h2 id="managed-arguments">Managed arguments<a class="headerlink" href="#managed-arguments" title="Permalink to this heading">¶</a></h2>
+<p>As noted above, Fab manages a few command line arguments for some of the tools
+it uses.</p>
+<section id="fortran-preprocessors">
+<h3 id="fortran-preprocessors">Fortran Preprocessors<a class="headerlink" href="#fortran-preprocessors" title="Permalink to this heading">¶</a></h3>
+<p>Fab knows about some preprocessors which are used with Fortran, currently <em>fpp</em>
+and <em>cpp</em>. It will ensure the <code class="docutils literal notranslate"><span class="pre">-P</span></code> flag is present to disable line numbering
+directives in the output, which is currently required for fparser to parse the
+output.</p>
+</section>
+<section id="fortran-compilers">
+<h3 id="fortran-compilers">Fortran Compilers<a class="headerlink" href="#fortran-compilers" title="Permalink to this heading">¶</a></h3>
+<p>Fab knows about some Fortran compilers (currently <em>gfortran</em> or <em>ifort</em>).
+It will make sure the <cite>-c</cite> flag is present to compile but not link.</p>
+<p>If the compiler flag which sets the module folder is present, i.e. <code class="docutils literal notranslate"><span class="pre">-J</span></code> for
+gfortran or <code class="docutils literal notranslate"><span class="pre">-module</span></code> for ifort, Fab will <strong>remove</strong> the flag, with a
+notification, as it needs to use this flag to control the output location.</p>
+</section>
+</section>
+<section id="tool-arguments">
+<span id="advanced-flags"></span><h2 id="tool-arguments">Tool arguments<a class="headerlink" href="#tool-arguments" title="Permalink to this heading">¶</a></h2>
+<p>Sometimes it is necessary to pass additional arguments when we call a software
+tool.</p>
+<section id="linker-flags">
+<h3 id="linker-flags">Linker flags<a class="headerlink" href="#linker-flags" title="Permalink to this heading">¶</a></h3>
+<p>Probably the most common instance of the need to pass additional arguments is
+to specify 3rd party libraries at the link stage.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">link_exe</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'-lm'</span><span class="p">,</span> <span class="s1">'-lnetcdf'</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="path-specific-flags">
+<h3 id="path-specific-flags">Path-specific flags<a class="headerlink" href="#path-specific-flags" title="Permalink to this heading">¶</a></h3>
+<p>For preprocessing and compilation, we sometimes need to specify flags
+<em>per-file</em>. These steps accept both common flags and <em>path specific</em> flags.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="o">...</span>
+<span class="linenos">2</span><span class="n">compile_fortran</span><span class="p">(</span>
+<span class="linenos">3</span>    <span class="n">common_flags</span><span class="o">=</span><span class="p">[</span><span class="s1">'-O2'</span><span class="p">],</span>
+<span class="linenos">4</span>    <span class="n">path_flags</span><span class="o">=</span><span class="p">[</span>
+<span class="linenos">5</span>        <span class="n">AddFlags</span><span class="p">(</span><span class="s1">'$output/um/*'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'-I'</span> <span class="o">+</span> <span class="s1">'/gcom'</span><span class="p">])</span>
+<span class="linenos">6</span>    <span class="p">],</span>
+<span class="linenos">7</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will add <code class="docutils literal notranslate"><span class="pre">-O2</span></code> to every invocation of the tool, but only add the
+<code class="docutils literal notranslate"><span class="pre">*/gcom*</span></code> include path when processing files in the
+<code class="docutils literal notranslate"><span class="pre">*&lt;project</span> <span class="pre">workspace&gt;/build_output/um*</span></code> folder.</p>
+<p>Path matching is done using Python’s <a class="reference external" href="https://docs.python.org/3.10/library/fnmatch.html#fnmatch.fnmatch">fnmatch</a>.
+The <code class="docutils literal notranslate"><span class="pre">$output</span></code> is a template, see <a class="reference internal" href="apidoc/fab.build_config.html#fab.build_config.AddFlags" title="fab.build_config.AddFlags"><code class="xref py py-class docutils literal notranslate"><span class="pre">AddFlags</span></code></a>.</p>
+<p>We can currently only <em>add</em> flags for a path.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This can require some understanding of where and when files are placed in
+the <em>build_output</em> folder: It will generally match the structure you’ve
+created in <code class="docutils literal notranslate"><span class="pre">*&lt;project</span> <span class="pre">workspace&gt;/source*</span></code>, with your grab steps.</p>
+<p>Early steps like preprocessors generally read files from <code class="docutils literal notranslate"><span class="pre">*source*</span></code> and
+write to <code class="docutils literal notranslate"><span class="pre">*build_output*</span></code>.</p>
+<p>Later steps like compilers generally read files which are already in
+<code class="docutils literal notranslate"><span class="pre">*build_output*</span></code>.</p>
+<p>For more information on where files end up see <a class="reference internal" href="#directory-structure"><span class="std std-ref">Folder Structure</span></a>.</p>
+</div>
+</section>
+</section>
+<section id="folder-structure">
+<span id="directory-structure"></span><h2 id="folder-structure">Folder Structure<a class="headerlink" href="#folder-structure" title="Permalink to this heading">¶</a></h2>
+<p>It may be useful to understand how Fab uses the <a class="reference internal" href="glossary.html#term-Project-Workspace"><span class="xref std std-term">Project Workspace</span></a> and
+in particular where it creates files within it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;your $FAB_WORKSPACE&gt;
+   &lt;project workspace&gt;
+      source/
+      build_output/
+         *.f90 (preprocessed Fortran files)
+         *.mod (compiled module files)
+         _prebuild/
+            *.an (analysis results)
+            *.o (compiled object files)
+            *.mod (mod files)
+      metrics/
+      my_program.exe
+      log.txt
+</pre></div>
+</div>
+<p>The <em>project workspace</em> folder takes its name from the project label passed in to the build configuration.</p>
+<p>The <em>source</em> folder is where grab steps place their files.</p>
+<p>The <em>build_output</em> folder is where steps put their processed files.
+For example, a preprocessor reads <code class="docutils literal notranslate"><span class="pre">.F90</span></code> from <em>source</em> and writes <code class="docutils literal notranslate"><span class="pre">.f90</span></code> to <em>build_output</em>.</p>
+<p>The <em>_prebuild</em> folder contains reusable output. Files in this folder include a hash value in their filenames.</p>
+<p>The <em>metrics</em> folder contains some useful stats and graphs. See <a class="reference internal" href="features.html#metrics"><span class="std std-ref">Metrics</span></a>.</p>
+</section>
+<section id="c-pragma-injector">
+<span id="id1"></span><h2 id="c-pragma-injector">C Pragma Injector<a class="headerlink" href="#c-pragma-injector" title="Permalink to this heading">¶</a></h2>
+<p>The C pragma injector creates new C files with <code class="docutils literal notranslate"><span class="pre">.prag</span></code> file extensions, in the
+source folder. The C preprocessor looks for the output of this step by default.
+If not found, it will fall back to looking for <code class="docutils literal notranslate"><span class="pre">.c</span></code> files in the source
+listing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="o">...</span>
+<span class="linenos">2</span><span class="n">c_pragma_injector</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">preprocess_c</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="linenos">4</span><span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-steps">
+<span id="id2"></span><h2 id="custom-steps">Custom Steps<a class="headerlink" href="#custom-steps" title="Permalink to this heading">¶</a></h2>
+<p>If you need a custom build step, you can create a function with the @step
+decorator.</p>
+<p>Some example custom steps are included in the Fab testing configurations. For
+example a simple example was created for building JULES.</p>
+<p>The <a class="reference internal" href="apidoc/fab.steps.root_inc_files.html#fab.steps.root_inc_files.root_inc_files" title="fab.steps.root_inc_files.root_inc_files"><code class="xref py py-func docutils literal notranslate"><span class="pre">root_inc_files()</span></code></a> step copies all <code class="docutils literal notranslate"><span class="pre">.inc</span></code>
+files in the source tree into the root of the source tree, to make subsequent
+preprocessing flags easier to configure.</p>
+<p>That is a simple example that doesn’t need to interact with the
+<a class="reference internal" href="glossary.html#term-Artefact-Store"><span class="xref std std-term">Artefact Store</span></a>. Sometimes inserting a custom step means inserting a new
+<a class="reference internal" href="glossary.html#term-Artefact-Collection"><span class="xref std std-term">Artefact Collection</span></a> into the flow of data between steps.</p>
+<p>We can tell a subsequent step to read our new artefacts, instead of using it’s
+default <a class="reference internal" href="glossary.html#term-Artefacts-Getter"><span class="xref std std-term">Artefacts Getter</span></a>. We do this using the <code class="docutils literal notranslate"><span class="pre">source</span></code> argument,
+which most Fab steps accept. (See <a class="reference internal" href="#overriding-default-collections"><span class="std std-ref">Collection names</span></a>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@step</span>
+<span class="linenos">2</span><span class="k">def</span> <span class="nf">custom_step</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+<span class="linenos">3</span>        <span class="n">state</span><span class="o">.</span><span class="n">_artefact_store</span><span class="p">[</span><span class="s1">'custom_artefacts'</span><span class="p">]</span> <span class="o">=</span> <span class="n">do_something</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">_artefact_store</span><span class="p">[</span><span class="s1">'step 1 artefacts'</span><span class="p">])</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="k">with</span> <span class="n">BuildConfig</span><span class="p">(</span><span class="n">project_label</span><span class="o">=</span><span class="s1">'&lt;project label&gt;'</span><span class="p">)</span> <span class="k">as</span> <span class="n">state</span><span class="p">:</span>
+<span class="linenos">7</span>    <span class="n">fab_step1</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="linenos">8</span>    <span class="n">custom_step</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="linenos">9</span>    <span class="n">fab_step2</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">CollectionGetter</span><span class="p">(</span><span class="s1">'custom_artefacts'</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Steps have access to multiprocessing methods through the
+<a class="reference internal" href="apidoc/fab.steps.html#fab.steps.run_mp" title="fab.steps.run_mp"><code class="xref py py-func docutils literal notranslate"><span class="pre">run_mp()</span></code></a> helper function. This processes artefacts in parallel.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@step</span>
+<span class="linenos">2</span><span class="k">def</span> <span class="nf">custom_step</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+<span class="linenos">3</span>    <span class="n">input_files</span> <span class="o">=</span> <span class="n">artefact_store</span><span class="p">[</span><span class="s1">'custom_artefacts'</span><span class="p">]</span>
+<span class="linenos">4</span>    <span class="n">results</span> <span class="o">=</span> <span class="n">run_mp</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="n">input_files</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">do_something</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="collection-names">
+<span id="overriding-default-collections"></span><h2 id="collection-names">Collection names<a class="headerlink" href="#collection-names" title="Permalink to this heading">¶</a></h2>
+<p>Most steps allow the collections they read from and write to to be changed.</p>
+<p>Let’s imagine we need to upgrade a build script, adding a custom step to
+prepare our Fortran files for preprocessing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">find_source_files</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>  <span class="c1"># this was already here</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="c1"># instead of this</span>
+<span class="linenos"> 4</span><span class="c1"># preprocess_fortran(state)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1"># we now do this</span>
+<span class="linenos"> 7</span><span class="n">my_new_step</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">output_collection</span><span class="o">=</span><span class="s1">'my_new_collection'</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">preprocess_fortran</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">CollectionGetter</span><span class="p">(</span><span class="s1">'my_new_collection'</span><span class="p">))</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">analyse</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>  <span class="c1"># this was already here</span>
+</pre></div>
+</div>
+</section>
+<section id="parser-workarounds">
+<h2 id="parser-workarounds">Parser Workarounds<a class="headerlink" href="#parser-workarounds" title="Permalink to this heading">¶</a></h2>
+<p>Sometimes the parser used by Fab to understand source code can be unable to
+parse valid source files due to bugs or shortcomings. In order to still be able
+to build such code a number of possible work-arounds are presented.</p>
+<section id="unrecognised-dependencies">
+<span id="unrecognised-deps-workaround"></span><h3 id="unrecognised-dependencies">Unrecognised Dependencies<a class="headerlink" href="#unrecognised-dependencies" title="Permalink to this heading">¶</a></h3>
+<p>If a language parser is not able to recognise a dependency within a file,
+then Fab won’t know the dependency needs to be compiled.</p>
+<p>For example, some versions of fparser don’t recognise a call on a one-line if
+statement.</p>
+<p>We can manually add the dependency using the <cite>unreferenced_deps</cite> argument to
+<a class="reference internal" href="apidoc/fab.steps.analyse.html#fab.steps.analyse.analyse" title="fab.steps.analyse.analyse"><code class="xref py py-func docutils literal notranslate"><span class="pre">analyse()</span></code></a>.</p>
+<p>Pass in the name of the called function. Fab will find the file containing this
+symbol and add it, <em>and all its dependencies</em>, to every <a class="reference internal" href="glossary.html#term-Build-Tree"><span class="xref std std-term">Build Tree</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="o">...</span>
+<span class="linenos">2</span><span class="n">analyse</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">root_symbol</span><span class="o">=</span><span class="s1">'my_prog'</span><span class="p">,</span> <span class="n">unreferenced_deps</span><span class="o">=</span><span class="p">[</span><span class="s1">'my_func'</span><span class="p">])</span>
+<span class="linenos">3</span><span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="unparsable-files">
+<h3 id="unparsable-files">Unparsable Files<a class="headerlink" href="#unparsable-files" title="Permalink to this heading">¶</a></h3>
+<p>If a language parser is not able to process a file at all, then Fab won’t know
+about any of its symbols and dependencies. This can sometimes happen to <em>valid
+code</em> which compilers <em>are</em> able to process, for example if the language parser
+is still maturing and can’t yet handle an uncommon syntax.</p>
+<p>In this case we can manually give Fab the analysis results using the
+<cite>special_measure_analysis_results</cite> argument to
+<a class="reference internal" href="apidoc/fab.steps.analyse.html#fab.steps.analyse.analyse" title="fab.steps.analyse.analyse"><code class="xref py py-func docutils literal notranslate"><span class="pre">analyse()</span></code></a>.</p>
+<p>Pass in a list of <a class="reference internal" href="apidoc/fab.parse.fortran.html#fab.parse.fortran.FortranParserWorkaround" title="fab.parse.fortran.FortranParserWorkaround"><code class="xref py py-class docutils literal notranslate"><span class="pre">FortranParserWorkaround</span></code></a> objects,
+one for every file that can’t be parsed. Each object contains the symbol
+definitions and dependencies found in one source file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="o">...</span>
+<span class="linenos"> 2</span><span class="n">analyse</span><span class="p">(</span>
+<span class="linenos"> 3</span>    <span class="n">config</span><span class="p">,</span>
+<span class="linenos"> 4</span>    <span class="n">root_symbol</span><span class="o">=</span><span class="s1">'my_prog'</span><span class="p">,</span>
+<span class="linenos"> 5</span>    <span class="n">special_measure_analysis_results</span><span class="o">=</span><span class="p">[</span>
+<span class="linenos"> 6</span>        <span class="n">FortranParserWorkaround</span><span class="p">(</span>
+<span class="linenos"> 7</span>            <span class="n">fpath</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">build_output</span> <span class="o">/</span> <span class="s2">"path/to/file.f90"</span><span class="p">),</span>
+<span class="linenos"> 8</span>            <span class="n">module_defs</span><span class="o">=</span><span class="p">{</span><span class="s1">'my_mod'</span><span class="p">},</span> <span class="n">symbol_defs</span><span class="o">=</span><span class="p">{</span><span class="s1">'my_func'</span><span class="p">},</span>
+<span class="linenos"> 9</span>            <span class="n">module_deps</span><span class="o">=</span><span class="p">{</span><span class="s1">'other_mod'</span><span class="p">},</span> <span class="n">symbol_deps</span><span class="o">=</span><span class="p">{</span><span class="s1">'other_func'</span><span class="p">}),</span>
+<span class="linenos">10</span>    <span class="p">])</span>
+<span class="linenos">11</span><span class="o">...</span>
+</pre></div>
+</div>
+<p>In the above snippet we tell Fab that <code class="docutils literal notranslate"><span class="pre">file.f90</span></code> defines a module called
+<code class="docutils literal notranslate"><span class="pre">my_mod</span></code> and a function called <code class="docutils literal notranslate"><span class="pre">my_func</span></code>, and depends on a module called
+<code class="docutils literal notranslate"><span class="pre">other_mod</span></code> and a function called <code class="docutils literal notranslate"><span class="pre">other_func</span></code>.</p>
+<section id="custom-step">
+<h4 id="custom-step">Custom Step<a class="headerlink" href="#custom-step" title="Permalink to this heading">¶</a></h4>
+<p>An alternative approach for some problems is to write a custom step to modify
+the source so that the language parser can process it. Here’s a simple example,
+based on a
+<a class="reference external" href="https://github.com/metomi/fab/blob/216e00253ede22bfbcc2ee9b2e490d8c40421e5d/run_configs/um/build_um.py#L42-L65">real workaround</a>
+where the parser gets confused by a variable called <cite>NameListFile</cite>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nd">@step</span>
+<span class="linenos"> 2</span><span class="k">def</span> <span class="nf">my_custom_code_fixes</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+<span class="linenos"> 3</span>    <span class="n">fpath</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">source_root</span> <span class="o">/</span> <span class="s1">'path/to/file.F90'</span>
+<span class="linenos"> 4</span>    <span class="ow">in</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s2">"rt"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="linenos"> 5</span>    <span class="n">out</span> <span class="o">=</span> <span class="ow">in</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"NameListFile"</span><span class="p">,</span> <span class="s2">"MyRenamedVariable"</span><span class="p">)</span>
+<span class="linenos"> 6</span>    <span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s2">"wt"</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="k">with</span> <span class="n">BuildConfig</span><span class="p">(</span><span class="n">project_label</span><span class="o">=</span><span class="s1">'&lt;project_label&gt;'</span><span class="p">)</span> <span class="k">as</span> <span class="n">state</span><span class="p">:</span>
+<span class="linenos"> 9</span>    <span class="c1"># grab steps first</span>
+<span class="linenos">10</span>    <span class="n">my_custom_code_fixes</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<span class="linenos">11</span>    <span class="c1"># find_source_files, preprocess, etc, afterwards</span>
+</pre></div>
+</div>
+<p>A more detailed treatment of <a class="reference internal" href="#custom-steps"><span class="std std-ref">Custom Steps</span></a> is given elsewhere.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="writing_config.html" title="How to Write a Build Configuration"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> How to Write a Build Configuration </span>
+              </div>
+            </a>
+          
+          
+            <a href="features.html" title="Features"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Features </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2023.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

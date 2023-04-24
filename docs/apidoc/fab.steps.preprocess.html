@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>fab.steps.preprocess module &#8212; fab 1.1.dev0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fab.steps.psyclone module" href="fab.steps.psyclone.html" />
+    <link rel="prev" title="fab.steps.link module" href="fab.steps.link.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#apidoc/fab.steps.preprocess" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="fab 1.1.dev0 documentation"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">fab 1.1.dev0 documentation</span>
+          <span class="md-header-nav__topic"> fab.steps.preprocess module </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">fab 1.1.dev0 documentation</a></li>
+          <li class="md-tabs__item"><a href="modules.html" class="md-tabs__link">fab</a></li>
+          <li class="md-tabs__item"><a href="fab.html" class="md-tabs__link">fab package</a></li>
+          <li class="md-tabs__item"><a href="fab.steps.html" class="md-tabs__link">fab.steps package</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="fab 1.1.dev0 documentation" class="md-nav__button md-logo">
+      
+        <img src="../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="fab 1.1.dev0 documentation">fab 1.1.dev0 documentation</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Contents:</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../install.html" class="md-nav__link">Installing Fab</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../environment.html" class="md-nav__link">Environment</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../metoffice.html" class="md-nav__link">Using Fab at the Met Office</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../metoffice.html#developing-fab-at-the-met-office" class="md-nav__link">Developing Fab at the Met Office</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../config_intro.html" class="md-nav__link">Introduction to Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../writing_config.html" class="md-nav__link">How to Write a Build Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../advanced_config.html" class="md-nav__link">Advanced Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../features.html" class="md-nav__link">Features</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="modules.html" class="md-nav__link">Api Reference</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../development.html" class="md-nav__link">Developer’s guide</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../glossary.html" class="md-nav__link">Glossary</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../genindex.html" class="md-nav__link">Index</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../py-modindex.html" class="md-nav__link">Python Module Index</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#apidoc-fab-steps-preprocess--page-root" class="md-nav__link">fab.steps.preprocess module</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#fab.steps.preprocess.MpCommonArgs" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">MpCommonArgs</span></code></a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#fab.steps.preprocess.MpCommonArgs.config" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">MpCommonArgs.config</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.steps.preprocess.MpCommonArgs.output_suffix" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">MpCommonArgs.output_suffix</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.steps.preprocess.MpCommonArgs.preprocessor" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">MpCommonArgs.preprocessor</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.steps.preprocess.MpCommonArgs.flags" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">MpCommonArgs.flags</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.steps.preprocess.MpCommonArgs.name" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">MpCommonArgs.name</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#fab.steps.preprocess.pre_processor" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">pre_processor()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.steps.preprocess.process_artefact" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">process_artefact()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.steps.preprocess.get_fortran_preprocessor" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">get_fortran_preprocessor()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.steps.preprocess.preprocess_fortran" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">preprocess_fortran()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.steps.preprocess.DefaultCPreprocessorSource" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">DefaultCPreprocessorSource</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.steps.preprocess.preprocess_c" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">preprocess_c()</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/apidoc/fab.steps.preprocess.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="module-fab.steps.preprocess">
+<span id="fab-steps-preprocess-module"></span><h1 id="apidoc-fab-steps-preprocess--page-root">fab.steps.preprocess module<a class="headerlink" href="#apidoc-fab-steps-preprocess--page-root" title="Permalink to this heading">¶</a></h1>
+<p>Fortran and C Preprocessing.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="fab.steps.preprocess.MpCommonArgs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fab.steps.preprocess.</span></span><span class="sig-name descname"><span class="pre">MpCommonArgs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_suffix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocessor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.steps.preprocess.MpCommonArgs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Common args for calling process_artefact() using multiprocessing.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fab.steps.preprocess.MpCommonArgs.config">
+<span class="sig-name descname"><span class="pre">config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="fab.build_config.html#fab.build_config.BuildConfig" title="fab.build_config.BuildConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BuildConfig</span></code></a></em><a class="headerlink" href="#fab.steps.preprocess.MpCommonArgs.config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fab.steps.preprocess.MpCommonArgs.output_suffix">
+<span class="sig-name descname"><span class="pre">output_suffix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></em><a class="headerlink" href="#fab.steps.preprocess.MpCommonArgs.output_suffix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fab.steps.preprocess.MpCommonArgs.preprocessor">
+<span class="sig-name descname"><span class="pre">preprocessor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></em><a class="headerlink" href="#fab.steps.preprocess.MpCommonArgs.preprocessor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fab.steps.preprocess.MpCommonArgs.flags">
+<span class="sig-name descname"><span class="pre">flags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="fab.build_config.html#fab.build_config.FlagsConfig" title="fab.build_config.FlagsConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlagsConfig</span></code></a></em><a class="headerlink" href="#fab.steps.preprocess.MpCommonArgs.flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fab.steps.preprocess.MpCommonArgs.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></em><a class="headerlink" href="#fab.steps.preprocess.MpCommonArgs.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.steps.preprocess.pre_processor">
+<span class="sig-prename descclassname"><span class="pre">fab.steps.preprocess.</span></span><span class="sig-name descname"><span class="pre">pre_processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocessor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_collection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_suffix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'preprocess'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.steps.preprocess.pre_processor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preprocess Fortran or C files.</p>
+<p>Uses multiprocessing, unless disabled in the config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<a class="reference internal" href="fab.build_config.html#fab.build_config.BuildConfig" title="fab.build_config.BuildConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BuildConfig</span></code></a>) – The <a class="reference internal" href="fab.build_config.html#fab.build_config.BuildConfig" title="fab.build_config.BuildConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fab.build_config.BuildConfig</span></code></a> object where we can read settings
+such as the project workspace folder or the multiprocessing flag.</p></li>
+<li><p><strong>preprocessor</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – The preprocessor executable.</p></li>
+<li><p><strong>files</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Collection" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Collection</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]) – The files to preprocess.</p></li>
+<li><p><strong>output_collection</strong> – The name of the output artefact collection.</p></li>
+<li><p><strong>output_suffix</strong> – Suffix for output files.</p></li>
+<li><p><strong>common_flags</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]]) – (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)
+Used to construct a <code class="xref py py-class docutils literal notranslate"><span class="pre">FlagsConfig</span></code> object.</p></li>
+<li><p><strong>path_flags</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>]) – (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)
+Used to construct a <a class="reference internal" href="fab.build_config.html#fab.build_config.FlagsConfig" title="fab.build_config.FlagsConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlagsConfig</span></code></a> object.</p></li>
+<li><p><strong>name</strong> – (default: <code class="docutils literal notranslate"><span class="pre">'preprocess'</span></code>)
+Human friendly name for logger output, with sensible default.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.steps.preprocess.process_artefact">
+<span class="sig-prename descclassname"><span class="pre">fab.steps.preprocess.</span></span><span class="sig-name descname"><span class="pre">process_artefact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.steps.preprocess.process_artefact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expects an input file in the source folder.
+Writes the output file to the output folder, with a lower case extension.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.steps.preprocess.get_fortran_preprocessor">
+<span class="sig-prename descclassname"><span class="pre">fab.steps.preprocess.</span></span><span class="sig-name descname"><span class="pre">get_fortran_preprocessor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fab.steps.preprocess.get_fortran_preprocessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identify the fortran preprocessor and any flags from the environment.</p>
+<p>Initially looks for the <cite>FPP</cite> environment variable, then tries to call the <cite>fpp</cite> and <cite>cpp</cite> command line tools.</p>
+<p>Returns the executable and flags.</p>
+<p>The returned flags will always include <cite>-P</cite> to suppress line numbers.
+This fparser ticket requests line number handling <a class="reference external" href="https://github.com/stfc/fparser/issues/390">https://github.com/stfc/fparser/issues/390</a> .</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.steps.preprocess.preprocess_fortran">
+<span class="sig-prename descclassname"><span class="pre">fab.steps.preprocess.</span></span><span class="sig-name descname"><span class="pre">preprocess_fortran</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.steps.preprocess.preprocess_fortran" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to pre_processor for Fortran files.</p>
+<p>Ensures all preprocessed files are in the build output.
+This means <em>copying</em> already preprocessed files from source to build output.</p>
+<p>Params as per <code class="xref py py-func docutils literal notranslate"><span class="pre">_pre_processor()</span></code>.</p>
+<p>The preprocessor is taken from the <cite>FPP</cite> environment, or falls back to <cite>fpp -P</cite>.</p>
+<p>If source is not provided, it defaults to <cite>SuffixFilter(‘all_source’, ‘.F90’)</cite>.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="fab.steps.preprocess.DefaultCPreprocessorSource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fab.steps.preprocess.</span></span><span class="sig-name descname"><span class="pre">DefaultCPreprocessorSource</span></span><a class="headerlink" href="#fab.steps.preprocess.DefaultCPreprocessorSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="fab.artefacts.html#fab.artefacts.ArtefactsGetter" title="fab.artefacts.ArtefactsGetter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArtefactsGetter</span></code></a></p>
+<p>A source getter specifically for c preprocessing.
+Looks for the default output from pragma injection, falls back to default source finder.
+This allows the step to work with or without a preceding pragma step.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="fab.steps.preprocess.preprocess_c">
+<span class="sig-prename descclassname"><span class="pre">fab.steps.preprocess.</span></span><span class="sig-name descname"><span class="pre">preprocess_c</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.steps.preprocess.preprocess_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to pre_processor for C files.</p>
+<p>Params as per <code class="xref py py-func docutils literal notranslate"><span class="pre">_pre_processor()</span></code>.</p>
+<p>The preprocessor is taken from the <cite>CPP</cite> environment, or falls back to <cite>cpp</cite>.</p>
+<p>If source is not provided, it defaults to <a class="reference internal" href="#fab.steps.preprocess.DefaultCPreprocessorSource" title="fab.steps.preprocess.DefaultCPreprocessorSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">DefaultCPreprocessorSource</span></code></a>.</p>
+</dd></dl>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="fab.steps.link.html" title="fab.steps.link module"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> fab.steps.link module </span>
+              </div>
+            </a>
+          
+          
+            <a href="fab.steps.psyclone.html" title="fab.steps.psyclone module"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> fab.steps.psyclone module </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2023.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

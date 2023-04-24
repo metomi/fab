@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>fab.parse package &#8212; fab 1.1.dev0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fab.parse.c module" href="fab.parse.c.html" />
+    <link rel="prev" title="fab package" href="fab.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#apidoc/fab.parse" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="fab 1.1.dev0 documentation"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">fab 1.1.dev0 documentation</span>
+          <span class="md-header-nav__topic"> fab.parse package </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">fab 1.1.dev0 documentation</a></li>
+          <li class="md-tabs__item"><a href="modules.html" class="md-tabs__link">fab</a></li>
+          <li class="md-tabs__item"><a href="fab.html" class="md-tabs__link">fab package</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="fab 1.1.dev0 documentation" class="md-nav__button md-logo">
+      
+        <img src="../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="fab 1.1.dev0 documentation">fab 1.1.dev0 documentation</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Contents:</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../install.html" class="md-nav__link">Installing Fab</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../environment.html" class="md-nav__link">Environment</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../metoffice.html" class="md-nav__link">Using Fab at the Met Office</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../metoffice.html#developing-fab-at-the-met-office" class="md-nav__link">Developing Fab at the Met Office</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../config_intro.html" class="md-nav__link">Introduction to Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../writing_config.html" class="md-nav__link">How to Write a Build Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../advanced_config.html" class="md-nav__link">Advanced Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../features.html" class="md-nav__link">Features</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="modules.html" class="md-nav__link">Api Reference</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../development.html" class="md-nav__link">Developer’s guide</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../glossary.html" class="md-nav__link">Glossary</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../genindex.html" class="md-nav__link">Index</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../py-modindex.html" class="md-nav__link">Python Module Index</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#apidoc-fab-parse--page-root" class="md-nav__link">fab.parse package</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#fab.parse.ParseException" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">ParseException</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.parse.AnalysedFile" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">AnalysedFile</span></code></a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#fab.parse.AnalysedFile.file_hash" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">AnalysedFile.file_hash</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.parse.AnalysedFile.to_dict" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">AnalysedFile.to_dict()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.parse.AnalysedFile.from_dict" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">AnalysedFile.from_dict()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.parse.AnalysedFile.save" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">AnalysedFile.save()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.parse.AnalysedFile.load" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">AnalysedFile.load()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#fab.parse.AnalysedFile.field_names" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">AnalysedFile.field_names()</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#fab.parse.EmptySourceFile" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">EmptySourceFile</span></code></a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#fab.parse.EmptySourceFile.from_dict" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">EmptySourceFile.from_dict()</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#submodules" class="md-nav__link">Submodules</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/apidoc/fab.parse.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="module-fab.parse">
+<span id="fab-parse-package"></span><h1 id="apidoc-fab-parse--page-root">fab.parse package<a class="headerlink" href="#apidoc-fab-parse--page-root" title="Permalink to this heading">¶</a></h1>
+<dl class="py exception">
+<dt class="sig sig-object py" id="fab.parse.ParseException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fab.parse.</span></span><span class="sig-name descname"><span class="pre">ParseException</span></span><a class="headerlink" href="#fab.parse.ParseException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="fab.parse.AnalysedFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fab.parse.</span></span><span class="sig-name descname"><span class="pre">AnalysedFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_hash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.parse.AnalysedFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
+<p>Analysis results for a single file. Abstract base class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fpath</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]) – The path of the file which was analysed.</p></li>
+<li><p><strong>file_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]) – (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)
+The checksum of the file which was analysed.
+If omitted, Fab will evaluate lazily.</p></li>
+</ul>
+</dd>
+</dl>
+<p>If not provided, the <cite>self.file_hash</cite> property is lazily evaluated in case the file does not yet exist.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="fab.parse.AnalysedFile.file_hash">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_hash</span></span><a class="headerlink" href="#fab.parse.AnalysedFile.file_hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fab.parse.AnalysedFile.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fab.parse.AnalysedFile.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dict representing the object.</p>
+<p>The dict may be written to json, so can’t contain sets.
+Lists are sorted for reproducibility in testing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fab.parse.AnalysedFile.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.parse.AnalysedFile.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fab.parse.AnalysedFile.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.parse.AnalysedFile.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fab.parse.AnalysedFile.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.parse.AnalysedFile.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fab.parse.AnalysedFile.field_names">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">field_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fab.parse.AnalysedFile.field_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the order in which we want fields to appear in str or repr strings.</p>
+<p>Calling this helps to ensure any lazy attributes are evaluated before use,
+e.g when constructing a string representation of the instance, or generating a hash value.</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="fab.parse.EmptySourceFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fab.parse.</span></span><span class="sig-name descname"><span class="pre">EmptySourceFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.parse.EmptySourceFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fab.parse.AnalysedFile" title="fab.parse.AnalysedFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnalysedFile</span></code></a></p>
+<p>An analysis result for a file which resulted in an empty parse tree.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fpath</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]) – The path of the file which was analysed.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fab.parse.EmptySourceFile.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fab.parse.EmptySourceFile.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<section id="submodules">
+<h2 id="submodules">Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fab.parse.c.html">fab.parse.c module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fab.parse.c.html#fab.parse.c.AnalysedC"><code class="docutils literal notranslate"><span class="pre">AnalysedC</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fab.parse.c.html#fab.parse.c.CAnalyser"><code class="docutils literal notranslate"><span class="pre">CAnalyser</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.c.html#fab.parse.c.CAnalyser.run"><code class="docutils literal notranslate"><span class="pre">CAnalyser.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fab.parse.fortran.html">fab.parse.fortran module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fab.parse.fortran.html#fab.parse.fortran.AnalysedFortran"><code class="docutils literal notranslate"><span class="pre">AnalysedFortran</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.fortran.html#fab.parse.fortran.AnalysedFortran.add_program_def"><code class="docutils literal notranslate"><span class="pre">AnalysedFortran.add_program_def()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.fortran.html#fab.parse.fortran.AnalysedFortran.add_module_def"><code class="docutils literal notranslate"><span class="pre">AnalysedFortran.add_module_def()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.fortran.html#fab.parse.fortran.AnalysedFortran.add_module_dep"><code class="docutils literal notranslate"><span class="pre">AnalysedFortran.add_module_dep()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.fortran.html#fab.parse.fortran.AnalysedFortran.mod_filenames"><code class="docutils literal notranslate"><span class="pre">AnalysedFortran.mod_filenames</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.fortran.html#fab.parse.fortran.AnalysedFortran.field_names"><code class="docutils literal notranslate"><span class="pre">AnalysedFortran.field_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.fortran.html#fab.parse.fortran.AnalysedFortran.to_dict"><code class="docutils literal notranslate"><span class="pre">AnalysedFortran.to_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.fortran.html#fab.parse.fortran.AnalysedFortran.from_dict"><code class="docutils literal notranslate"><span class="pre">AnalysedFortran.from_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.fortran.html#fab.parse.fortran.AnalysedFortran.validate"><code class="docutils literal notranslate"><span class="pre">AnalysedFortran.validate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fab.parse.fortran.html#fab.parse.fortran.FortranAnalyser"><code class="docutils literal notranslate"><span class="pre">FortranAnalyser</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.fortran.html#fab.parse.fortran.FortranAnalyser.walk_nodes"><code class="docutils literal notranslate"><span class="pre">FortranAnalyser.walk_nodes()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fab.parse.fortran.html#fab.parse.fortran.FortranParserWorkaround"><code class="docutils literal notranslate"><span class="pre">FortranParserWorkaround</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.fortran.html#fab.parse.fortran.FortranParserWorkaround.as_analysed_fortran"><code class="docutils literal notranslate"><span class="pre">FortranParserWorkaround.as_analysed_fortran()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fab.parse.fortran_common.html">fab.parse.fortran_common module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fab.parse.fortran_common.html#fab.parse.fortran_common.iter_content"><code class="docutils literal notranslate"><span class="pre">iter_content()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fab.parse.fortran_common.html#fab.parse.fortran_common.FortranAnalyserBase"><code class="docutils literal notranslate"><span class="pre">FortranAnalyserBase</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.fortran_common.html#fab.parse.fortran_common.FortranAnalyserBase.run"><code class="docutils literal notranslate"><span class="pre">FortranAnalyserBase.run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.fortran_common.html#fab.parse.fortran_common.FortranAnalyserBase.walk_nodes"><code class="docutils literal notranslate"><span class="pre">FortranAnalyserBase.walk_nodes()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fab.parse.x90.html">fab.parse.x90 module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fab.parse.x90.html#fab.parse.x90.AnalysedX90"><code class="docutils literal notranslate"><span class="pre">AnalysedX90</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.x90.html#fab.parse.x90.AnalysedX90.to_dict"><code class="docutils literal notranslate"><span class="pre">AnalysedX90.to_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.x90.html#fab.parse.x90.AnalysedX90.from_dict"><code class="docutils literal notranslate"><span class="pre">AnalysedX90.from_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.x90.html#fab.parse.x90.AnalysedX90.field_names"><code class="docutils literal notranslate"><span class="pre">AnalysedX90.field_names()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fab.parse.x90.html#fab.parse.x90.X90Analyser"><code class="docutils literal notranslate"><span class="pre">X90Analyser</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.x90.html#fab.parse.x90.X90Analyser.walk_nodes"><code class="docutils literal notranslate"><span class="pre">X90Analyser.walk_nodes()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="fab.html" title="fab package"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> fab package </span>
+              </div>
+            </a>
+          
+          
+            <a href="fab.parse.c.html" title="fab.parse.c module"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> fab.parse.c module </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2023.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

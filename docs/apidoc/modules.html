@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>fab &#8212; fab 1.1.dev0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fab package" href="fab.html" />
+    <link rel="prev" title="Features" href="../features.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#apidoc/modules" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="fab 1.1.dev0 documentation"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">fab 1.1.dev0 documentation</span>
+          <span class="md-header-nav__topic"> fab </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">fab 1.1.dev0 documentation</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="fab 1.1.dev0 documentation" class="md-nav__button md-logo">
+      
+        <img src="../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="fab 1.1.dev0 documentation">fab 1.1.dev0 documentation</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Contents:</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../install.html" class="md-nav__link">Installing Fab</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../environment.html" class="md-nav__link">Environment</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../metoffice.html" class="md-nav__link">Using Fab at the Met Office</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../metoffice.html#developing-fab-at-the-met-office" class="md-nav__link">Developing Fab at the Met Office</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../config_intro.html" class="md-nav__link">Introduction to Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../writing_config.html" class="md-nav__link">How to Write a Build Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../advanced_config.html" class="md-nav__link">Advanced Configuration</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../features.html" class="md-nav__link">Features</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> Api Reference </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">Api Reference</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/apidoc/modules.rst.txt">Show Source</a> </li>
+
+  </ul>
+</nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../development.html" class="md-nav__link">Developer’s guide</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../glossary.html" class="md-nav__link">Glossary</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../genindex.html" class="md-nav__link">Index</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../py-modindex.html" class="md-nav__link">Python Module Index</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/apidoc/modules.rst.txt">Show Source</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="fab">
+<h1 id="apidoc-modules--page-root">fab<a class="headerlink" href="#apidoc-modules--page-root" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fab.html">fab package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fab.html#fab.FabException"><code class="docutils literal notranslate"><span class="pre">FabException</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fab.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fab.parse.html">fab.parse package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fab.parse.html#fab.parse.ParseException"><code class="docutils literal notranslate"><span class="pre">ParseException</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.parse.html#fab.parse.AnalysedFile"><code class="docutils literal notranslate"><span class="pre">AnalysedFile</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fab.parse.html#fab.parse.AnalysedFile.file_hash"><code class="docutils literal notranslate"><span class="pre">AnalysedFile.file_hash</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.parse.html#fab.parse.AnalysedFile.to_dict"><code class="docutils literal notranslate"><span class="pre">AnalysedFile.to_dict()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.parse.html#fab.parse.AnalysedFile.from_dict"><code class="docutils literal notranslate"><span class="pre">AnalysedFile.from_dict()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.parse.html#fab.parse.AnalysedFile.save"><code class="docutils literal notranslate"><span class="pre">AnalysedFile.save()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.parse.html#fab.parse.AnalysedFile.load"><code class="docutils literal notranslate"><span class="pre">AnalysedFile.load()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.parse.html#fab.parse.AnalysedFile.field_names"><code class="docutils literal notranslate"><span class="pre">AnalysedFile.field_names()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="fab.parse.html#fab.parse.EmptySourceFile"><code class="docutils literal notranslate"><span class="pre">EmptySourceFile</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fab.parse.html#fab.parse.EmptySourceFile.from_dict"><code class="docutils literal notranslate"><span class="pre">EmptySourceFile.from_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="fab.parse.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fab.parse.c.html">fab.parse.c module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.parse.fortran.html">fab.parse.fortran module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.parse.fortran_common.html">fab.parse.fortran_common module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.parse.x90.html">fab.parse.x90 module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fab.steps.html">fab.steps package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fab.steps.html#fab.steps.step"><code class="docutils literal notranslate"><span class="pre">step()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.steps.html#fab.steps.run_mp"><code class="docutils literal notranslate"><span class="pre">run_mp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.steps.html#fab.steps.run_mp_imap"><code class="docutils literal notranslate"><span class="pre">run_mp_imap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.steps.html#fab.steps.check_for_errors"><code class="docutils literal notranslate"><span class="pre">check_for_errors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.steps.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fab.steps.grab.html">fab.steps.grab package</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="fab.steps.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fab.steps.analyse.html">fab.steps.analyse module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.steps.archive_objects.html">fab.steps.archive_objects module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.steps.c_pragma_injector.html">fab.steps.c_pragma_injector module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.steps.cleanup_prebuilds.html">fab.steps.cleanup_prebuilds module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.steps.compile_c.html">fab.steps.compile_c module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.steps.compile_fortran.html">fab.steps.compile_fortran module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.steps.find_source_files.html">fab.steps.find_source_files module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.steps.link.html">fab.steps.link module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.steps.preprocess.html">fab.steps.preprocess module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.steps.psyclone.html">fab.steps.psyclone module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.steps.root_inc_files.html">fab.steps.root_inc_files module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fab.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fab.artefacts.html">fab.artefacts module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fab.artefacts.html#fab.artefacts.ArtefactsGetter"><code class="docutils literal notranslate"><span class="pre">ArtefactsGetter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.artefacts.html#fab.artefacts.CollectionGetter"><code class="docutils literal notranslate"><span class="pre">CollectionGetter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.artefacts.html#fab.artefacts.CollectionConcat"><code class="docutils literal notranslate"><span class="pre">CollectionConcat</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.artefacts.html#fab.artefacts.SuffixFilter"><code class="docutils literal notranslate"><span class="pre">SuffixFilter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.artefacts.html#fab.artefacts.FilterBuildTrees"><code class="docutils literal notranslate"><span class="pre">FilterBuildTrees</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fab.build_config.html">fab.build_config module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fab.build_config.html#fab.build_config.BuildConfig"><code class="docutils literal notranslate"><span class="pre">BuildConfig</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fab.build_config.html#fab.build_config.BuildConfig.build_output"><code class="docutils literal notranslate"><span class="pre">BuildConfig.build_output</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.build_config.html#fab.build_config.BuildConfig.init_artefact_store"><code class="docutils literal notranslate"><span class="pre">BuildConfig.init_artefact_store()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.build_config.html#fab.build_config.BuildConfig.add_current_prebuilds"><code class="docutils literal notranslate"><span class="pre">BuildConfig.add_current_prebuilds()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="fab.build_config.html#fab.build_config.AddFlags"><code class="docutils literal notranslate"><span class="pre">AddFlags</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fab.build_config.html#fab.build_config.AddFlags.run"><code class="docutils literal notranslate"><span class="pre">AddFlags.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="fab.build_config.html#fab.build_config.FlagsConfig"><code class="docutils literal notranslate"><span class="pre">FlagsConfig</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fab.build_config.html#fab.build_config.FlagsConfig.flags_for_path"><code class="docutils literal notranslate"><span class="pre">FlagsConfig.flags_for_path()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fab.cli.html">fab.cli module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fab.cli.html#fab.cli.calc_linker_flags"><code class="docutils literal notranslate"><span class="pre">calc_linker_flags()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.cli.html#fab.cli.cli_fab"><code class="docutils literal notranslate"><span class="pre">cli_fab()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fab.constants.html">fab.constants module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fab.dep_tree.html">fab.dep_tree module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fab.dep_tree.html#fab.dep_tree.AnalysedDependent"><code class="docutils literal notranslate"><span class="pre">AnalysedDependent</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fab.dep_tree.html#fab.dep_tree.AnalysedDependent.add_symbol_def"><code class="docutils literal notranslate"><span class="pre">AnalysedDependent.add_symbol_def()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.dep_tree.html#fab.dep_tree.AnalysedDependent.add_symbol_dep"><code class="docutils literal notranslate"><span class="pre">AnalysedDependent.add_symbol_dep()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.dep_tree.html#fab.dep_tree.AnalysedDependent.add_file_dep"><code class="docutils literal notranslate"><span class="pre">AnalysedDependent.add_file_dep()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.dep_tree.html#fab.dep_tree.AnalysedDependent.field_names"><code class="docutils literal notranslate"><span class="pre">AnalysedDependent.field_names()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.dep_tree.html#fab.dep_tree.AnalysedDependent.to_dict"><code class="docutils literal notranslate"><span class="pre">AnalysedDependent.to_dict()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.dep_tree.html#fab.dep_tree.AnalysedDependent.from_dict"><code class="docutils literal notranslate"><span class="pre">AnalysedDependent.from_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="fab.dep_tree.html#fab.dep_tree.extract_sub_tree"><code class="docutils literal notranslate"><span class="pre">extract_sub_tree()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.dep_tree.html#fab.dep_tree.filter_source_tree"><code class="docutils literal notranslate"><span class="pre">filter_source_tree()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.dep_tree.html#fab.dep_tree.validate_dependencies"><code class="docutils literal notranslate"><span class="pre">validate_dependencies()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fab.metrics.html">fab.metrics module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fab.metrics.html#fab.metrics.init_metrics"><code class="docutils literal notranslate"><span class="pre">init_metrics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.metrics.html#fab.metrics.send_metric"><code class="docutils literal notranslate"><span class="pre">send_metric()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.metrics.html#fab.metrics.stop_metrics"><code class="docutils literal notranslate"><span class="pre">stop_metrics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.metrics.html#fab.metrics.metrics_summary"><code class="docutils literal notranslate"><span class="pre">metrics_summary()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fab.mo.html">fab.mo module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fab.mo.html#fab.mo.add_mo_commented_file_deps"><code class="docutils literal notranslate"><span class="pre">add_mo_commented_file_deps()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fab.tools.html">fab.tools module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fab.tools.html#fab.tools.Compiler"><code class="docutils literal notranslate"><span class="pre">Compiler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.tools.html#fab.tools.remove_managed_flags"><code class="docutils literal notranslate"><span class="pre">remove_managed_flags()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.tools.html#fab.tools.flags_checksum"><code class="docutils literal notranslate"><span class="pre">flags_checksum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.tools.html#fab.tools.run_command"><code class="docutils literal notranslate"><span class="pre">run_command()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.tools.html#fab.tools.get_tool"><code class="docutils literal notranslate"><span class="pre">get_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.tools.html#fab.tools.get_compiler_version"><code class="docutils literal notranslate"><span class="pre">get_compiler_version()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fab.util.html">fab.util module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.log_or_dot"><code class="docutils literal notranslate"><span class="pre">log_or_dot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.log_or_dot_finish"><code class="docutils literal notranslate"><span class="pre">log_or_dot_finish()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.HashedFile"><code class="docutils literal notranslate"><span class="pre">HashedFile</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="fab.util.html#fab.util.HashedFile.file_hash"><code class="docutils literal notranslate"><span class="pre">HashedFile.file_hash</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="fab.util.html#fab.util.HashedFile.fpath"><code class="docutils literal notranslate"><span class="pre">HashedFile.fpath</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.file_checksum"><code class="docutils literal notranslate"><span class="pre">file_checksum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.string_checksum"><code class="docutils literal notranslate"><span class="pre">string_checksum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.file_walk"><code class="docutils literal notranslate"><span class="pre">file_walk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.Timer"><code class="docutils literal notranslate"><span class="pre">Timer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.TimerLogger"><code class="docutils literal notranslate"><span class="pre">TimerLogger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.CompiledFile"><code class="docutils literal notranslate"><span class="pre">CompiledFile</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.input_to_output_fpath"><code class="docutils literal notranslate"><span class="pre">input_to_output_fpath()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.suffix_filter"><code class="docutils literal notranslate"><span class="pre">suffix_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.by_type"><code class="docutils literal notranslate"><span class="pre">by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.get_fab_workspace"><code class="docutils literal notranslate"><span class="pre">get_fab_workspace()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.get_prebuild_file_groups"><code class="docutils literal notranslate"><span class="pre">get_prebuild_file_groups()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fab.util.html#fab.util.common_arg_parser"><code class="docutils literal notranslate"><span class="pre">common_arg_parser()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../features.html" title="Features"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Features </span>
+              </div>
+            </a>
+          
+          
+            <a href="fab.html" title="fab package"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> fab package </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2023.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
