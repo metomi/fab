@@ -7,35 +7,36 @@ from pathlib import Path
 from typing import Optional, Union, Tuple
 import xml.etree.ElementTree as ET
 
+from fab.build_config import BuildConfig
 from fab.steps import step
 from fab.tools import run_command
 
 
-def _get_revision(src, revision=None) -> Tuple[str, Union[str, None]]:
+def split_repo_url(url: str,
+                   revision: Optional[str] = None) -> Tuple[str, Optional[str]]:
     """
-    Pull out the revision if it's part of the url.
+    Separates revision from a repository URL.
 
-    Some operations need it separated from the url,
-    e.g. when calling fcm update, which accepts revision but no url.
+    A default may be specified which will be used if none is found.
 
-    :param src:
-        Repo url.
-    :param revision:
-        Optional revision.
-    Returns (src, revision)
-
+    :param url: Location of repository.
+    :param revision: A default revision in case none is present.
+    :return: URL and revision, the latter may be None.
+    :raises: ValueError: If revision is present in the URL and disagrees with
+                         the default specified.
     """
+    # ToDo: This function is a bit mental. Is any of this necessary?
     url_revision = None
-    at_split = src.split('@')
+    at_split = url.split('@')
     if len(at_split) == 2:
         url_revision = at_split[1]
         if url_revision and revision and url_revision != revision:
             raise ValueError('Conflicting revisions in url and argument. Please provide as argument only.')
-        src = at_split[0]
+        url = at_split[0]
     else:
         assert len(at_split) == 1
 
-    return src, revision or url_revision
+    return url, revision or url_revision
 
 
 def tool_available(command) -> bool:
@@ -63,7 +64,7 @@ def is_working_copy(tool, dst: Union[str, Path]) -> bool:
 
 def _svn_prep_common(config, src: str, dst_label: Optional[str], revision: Optional[str]) -> \
         Tuple[str, Path, Optional[str]]:
-    src, revision = _get_revision(src, revision)
+    src, revision = split_repo_url(src, revision)
     if not config.source_root.exists():
         config.source_root.mkdir(parents=True, exist_ok=True)
     dst: Path = config.source_root / (dst_label or '')
@@ -72,7 +73,7 @@ def _svn_prep_common(config, src: str, dst_label: Optional[str], revision: Optio
 
 
 @step
-def svn_export(config, src: str, dst_label: Optional[str] = None, revision=None, tool='svn'):
+def svn_export(config: BuildConfig, src: str, dst_label: Optional[str] = None, revision=None, tool='svn'):
     # todo: params in docstrings
     """
     Export an FCM repo folder to the project workspace.

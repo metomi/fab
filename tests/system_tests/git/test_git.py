@@ -23,7 +23,7 @@ from pathlib import Path
 import pytest
 
 from fab.build_config import BuildConfig
-from fab.steps.grab.git import current_commit, git_checkout, git_merge
+from fab.steps.grab.git import __current_commit, git_checkout, git_merge
 
 
 @pytest.fixture

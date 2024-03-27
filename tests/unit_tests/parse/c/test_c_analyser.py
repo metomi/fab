@@ -2,6 +2,9 @@
 Test CAnalyser.
 
 """
+from pytest import importorskip
+importorskip("clang")
+
 from pathlib import Path
 from typing import List, Tuple
 from unittest import mock
