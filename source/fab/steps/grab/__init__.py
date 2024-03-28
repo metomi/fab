@@ -24,5 +24,5 @@ def call_rsync(src: Union[str, Path], dst: Union[str, Path]):
     if not src.endswith('/'):
         src += '/'
 
-    command = ['rsync', '--times', '--stats', '-ru', src, str(dst)]
+    command = ['rsync', '--times', '--links', '--stats', '-ru', src, str(dst)]
     return run_command(command)

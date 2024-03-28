@@ -33,7 +33,8 @@ class TestGrabFolder(object):
                 grab_folder(mock_config, src=grab_src, dst_label=dst)
 
         expect_dst = mock_config.source_root / dst
-        mock_run.assert_called_once_with(['rsync', '--times', '--stats', '-ru', expect_grab_src, str(expect_dst)])
+        mock_run.assert_called_once_with(['rsync', '--times', '--links', '--stats',
+                                          '-ru', expect_grab_src, str(expect_dst)])
 
 
 class TestGrabFcm(object):
