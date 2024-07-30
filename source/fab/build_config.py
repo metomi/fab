@@ -279,6 +279,60 @@ class AddFlags():
             # add our flags
             input_flags += add_flags
 
+class ReplaceFlags(object):
+    """
+    Replace command-line flags with a new set when our path filter matches.
+    Generally used inside a :class:`~fab.build_config.FlagsConfig`.
+
+    """
+    def __init__(self, match: str, flags: List[str]):
+        """
+        :param match:
+            The string to match against each file path.
+        :param flags:
+            The command-line flags to add for matching files.
+
+        Both the *match* and *flags* arguments can make use of templating:
+
+        - `$source` for *<project workspace>/source*
+        - `$output` for *<project workspace>/build_output*
+        - `$relative` for *<the source file's folder>*
+
+        For example::
+
+            # For source in the um folder, add an absolute include path
+            ReplaceFlags(match="$source/um/*", flags=['-I$source/include']),
+
+            # For source in the um folder, add an include path relative to each source file.
+            ReplaceFlags(match="$source/um/*", flags=['-I$relative/include']),
+
+        """
+        self.match: str = match
+        self.flags: List[str] = flags
+
+    # todo: we don't need the project_workspace, we could just pass in the output folder
+    def run(self, fpath: Path, input_flags: List[str], config):
+        """
+        Check if our filter matches a given file. If it does, add our flags.
+
+        :param fpath:
+            Filepath to check.
+        :param input_flags:
+            The list of command-line flags Fab is building for this file.
+        :param config:
+            Contains the folders for templating `$source` and `$output`.
+
+        """
+        params = {'relative': fpath.parent, 'source': config.source_root, 'output': config.build_output}
+
+        # does the file path match our filter?
+        if not self.match or fnmatch(str(fpath), Template(self.match).substitute(params)):
+            # use templating to render any relative paths in our flags
+            new_flags = [Template(flag).substitute(params) for flag in self.flags]
+
+            # add our flags
+            input_flags == new_flags
+
 
 class FlagsConfig():
     """
